@@ -83,9 +83,16 @@ public class Adventure {
                 currentRoom = currentRoom.getSouth();
 
         } else if (direction.equalsIgnoreCase("go east")) {
-            currentRoom = currentRoom.getEast();
+            if (currentRoom.getEast() == null) {
+                System.out.println("You can not go that way");
+            } else
+                currentRoom = currentRoom.getEast();
+
         } else if (direction.equalsIgnoreCase("go west")) {
-            currentRoom = currentRoom.getWest();
+            if (currentRoom.getWest() == null) {
+                System.out.println("You can not go that way");
+            } else
+                currentRoom = currentRoom.getWest();
         }
     }
 }

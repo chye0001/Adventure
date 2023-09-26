@@ -49,4 +49,5 @@ public class Room {
         return roomName + "\n" +
                "Room description: " + description + "\n";
     }
+
 }

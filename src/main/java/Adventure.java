@@ -11,6 +11,7 @@ public class Adventure {
     Room room9 = new Room("Room 9", "You are in Room 9");
 
     private Room currentRoom;
+    Room lastTeleport = room1;
 
     public Adventure() {
     }
@@ -94,10 +95,12 @@ public class Adventure {
             } else
                 currentRoom = currentRoom.getWest();
         }
-        if(currentRoom!= null) {
-            currentRoom = currentRoom;
-        } else {
+    }
 
-        }
+    public void teleport() {
+        Room tempCurrentRoom = currentRoom;
+        currentRoom = lastTeleport;
+
+        lastTeleport = tempCurrentRoom;
     }
 }

@@ -29,6 +29,7 @@ public class UserInterface {
                 case "go south" -> adventure.moveAround(input);
                 case "go east" -> adventure.moveAround(input);
                 case "go west" -> adventure.moveAround(input);
+                case "teleport" -> adventure.teleport();
                 case "help" -> System.out.println("If you want to move North, write: \"go north\"\n" +
                         "If you want to move East, then write \"go East\"\n" +
                         "If you want to move South, then write \"go south\"" +

@@ -77,5 +77,10 @@ public class Adventure {
         } else if (direction.equalsIgnoreCase("go west")) {
             currentRoom = currentRoom.getWest();
         }
+        if(currentRoom!= null) {
+            currentRoom = currentRoom;
+        } else {
+
+        }
     }
 }

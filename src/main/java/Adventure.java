@@ -94,5 +94,10 @@ public class Adventure {
             } else
                 currentRoom = currentRoom.getWest();
         }
+        if(currentRoom!= null) {
+            currentRoom = currentRoom;
+        } else {
+
+        }
     }
 }

@@ -44,8 +44,9 @@ public class Room {
         this.west = newRoom;
     }
 
+
     public String toString(){
-        return "Current room: " + roomName + "\n" +
-                "Room description: " + description + "\n";
+        return roomName + "\n" +
+               "Room description: " + description + "\n";
     }
 }

@@ -1,20 +1,25 @@
 public class Adventure {
 
+    Room room1 = new Room("Room 1", "You are in Room 1");
+    Room room2 = new Room("Room 2", "You are in Room 2");
+    Room room3 = new Room("Room 3", "You are in Room 3");
+    Room room4 = new Room("Room 4", "You are in Room 4");
+    Room room5 = new Room("Room 5", "You are in Room 5");
+    Room room6 = new Room("Room 6", "You are in Room 6");
+    Room room7 = new Room("Room 7", "You are in Room 7");
+    Room room8 = new Room("Room 8", "You are in Room 8");
+    Room room9 = new Room("Room 9", "You are in Room 9");
+
     private Room currentRoom;
 
-    public Adventure(){
+    public Adventure() {
     }
-    public void buildMap() {
-        Room room1 = new Room("Room 1", "You are in Room 1");
-        Room room2 = new Room("Room 2", "You are in Room 2");
-        Room room3 = new Room("Room 3", "You are in Room 3");
-        Room room4 = new Room("Room 4", "You are in Room 4");
-        Room room5 = new Room("Room 5", "You are in Room 5");
-        Room room6 = new Room("Room 6", "You are in Room 6");
-        Room room7 = new Room("Room 7", "You are in Room 7");
-        Room room8 = new Room("Room 8", "You are in Room 8");
-        Room room9 = new Room("Room 9", "You are in Room 9");
 
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public void buildMap() {
         room1.setEast(room2);
         room1.setNorth(null);
         room1.setSouth(room4);
@@ -63,15 +68,20 @@ public class Adventure {
         currentRoom = room1;
     }
 
-    public Room getCurrentRoom(){
-        return currentRoom;
-    }
-    public void moveAround(String direction){
+    public void moveAround(String direction) {
 
-        if (direction.equalsIgnoreCase("go north")){
-            currentRoom = currentRoom.getNorth();
+        if (direction.equalsIgnoreCase("go north")) {
+            if (currentRoom.getNorth() == null) {
+                System.out.println("You can not go that way");
+            } else
+                currentRoom = currentRoom.getNorth();
+
         } else if (direction.equalsIgnoreCase("go south")) {
-            currentRoom = currentRoom.getSouth();
+            if (currentRoom.getSouth() == null) {
+                System.out.println("You can not go that way");
+            } else
+                currentRoom = currentRoom.getSouth();
+
         } else if (direction.equalsIgnoreCase("go east")) {
             currentRoom = currentRoom.getEast();
         } else if (direction.equalsIgnoreCase("go west")) {

@@ -10,16 +10,19 @@ public class UserInterface {
     }
 
     public void startGame() {
-        adventure.buildMap();
 
-        System.out.println("Welcome to the adventure game!");
-        System.out.println("Write help for a list of instructions\n");
 
-        System.out.println("You are in the following room:");
-        adventure.getCurrentRoom();
+            adventure.buildMap();
 
-        System.out.println("Where do you wish to go?");
-        input = scanner.nextLine();
+            System.out.println("\nWelcome to the adventure game!");
+            System.out.println("Write help for a list of instructions\n");
+
+        do {
+            System.out.print("You are in the following room: ");
+            System.out.println(adventure.getCurrentRoom());
+
+            System.out.println("\nWhere do you wish to go?");
+            input = scanner.nextLine();
 
         switch (input) {
             case "look around" -> adventure.getCurrentRoom();

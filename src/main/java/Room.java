@@ -47,7 +47,7 @@ public class Room {
 
     public String toString(){
         return roomName + "\n" +
-               "Room description: " + description + "\n";
+                "Room description: " + description + "\n";
     }
 
 }

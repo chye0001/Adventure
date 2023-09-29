@@ -12,40 +12,49 @@ public class Room {
 
     Item item = new Item();
 
-    public Room (String roomName, String description) {
+    public Room(String roomName, String description) {
         this.roomName = roomName;
         this.description = description;
     }
-    public String getRoomName(){
+
+    public String getRoomName() {
         return roomName;
     }
-    public String getDescription(){
+
+    public String getDescription() {
         return description;
     }
+
     public Room getNorth() {
         return north;
     }
+
     public Room getSouth() {
         return south;
     }
+
     public Room getEast() {
         return east;
     }
+
     public Room getWest() {
         return west;
     }
 
 
-    public void setNorth(Room newRoom){
+    public void setNorth(Room newRoom) {
         this.north = newRoom;
     }
-    public void setSouth(Room newRoom){
+
+    public void setSouth(Room newRoom) {
         this.south = newRoom;
     }
-    public void setEast(Room newRoom){
+
+    public void setEast(Room newRoom) {
         this.east = newRoom;
     }
-    public void setWest(Room newRoom){
+
+    public void setWest(Room newRoom) {
         this.west = newRoom;
     }
 
@@ -72,7 +81,7 @@ public class Room {
         return itemInRoom;
     }
 
-    public String toString(){
+    public String toString() {
         return roomName + "\n" +
                 "Room description: " + description + "\n";
     }

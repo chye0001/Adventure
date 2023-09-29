@@ -18,12 +18,14 @@ public class UserInterface {
             System.out.println("\nWelcome to the adventure game!");
             System.out.println("Write help for a list of instructions\n");
 
+
         do {
             System.out.print("You are in the following room: ");
             System.out.println(controller.getCurrentRoom());
 
             System.out.println("\nWhere do you wish to go?");
             input = scanner.nextLine();
+
 
             String firstInput = "";
             String secondInput = "";

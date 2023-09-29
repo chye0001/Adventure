@@ -4,19 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" name="Changes" comment="Added: Adventure del 1, version 1">
+    <list default="true" id="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" name="Changes" comment="Added: teleport method">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Adventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adventure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Adventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdventureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
     </list>
-    <list id="e780b553-eb8a-4abb-8f39-318a806f20c5" name="Changes by Azra" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Adventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adventure.java" afterDir="false" />
-    </list>
-    <list id="cf8059fa-0e91-4e9c-92d4-8bfb0c84a016" name="Changes by frede" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Adventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Adventure.java" afterDir="false" />
+    <list id="e780b553-eb8a-4abb-8f39-318a806f20c5" name="Changes by Azra" comment="Changes by Azra">
       <change beforePath="$PROJECT_DIR$/src/main/java/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
+    </list>
+    <list id="693b6890-7d79-4552-b788-ccc64fec8687" name="Changes by frede" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Room.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,41 +38,29 @@
   <component name="LineStatusTrackerManager">
     <file path="$PROJECT_DIR$/src/main/java/Room.java">
       <ranges>
-        <range start1="8" end1="8" start2="8" end2="9" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="45" end1="45" start2="46" end2="47" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="47" end1="49" start2="49" end2="51" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="50" end1="50" start2="52" end2="53" changelist="cf8059fa-0e91-4e9c-92d4-8bfb0c84a016" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/main/java/Adventure.java">
-      <ranges>
-        <range start1="2" end1="2" start2="2" end2="12" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="3" end1="3" start2="13" end2="15" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="4" end1="5" start2="16" end2="17" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="6" end1="6" start2="18" end2="23" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="7" end1="17" start2="24" end2="24" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="29" end1="30" start2="36" end2="37" changelist="cf8059fa-0e91-4e9c-92d4-8bfb0c84a016" />
-        <range start1="65" end1="69" start2="72" end2="73" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="70" end1="72" start2="74" end2="80" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="73" end1="74" start2="81" end2="86" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="75" end1="76" start2="87" end2="92" changelist="e780b553-eb8a-4abb-8f39-318a806f20c5" />
-        <range start1="77" end1="78" start2="93" end2="97" changelist="e780b553-eb8a-4abb-8f39-318a806f20c5" />
-        <range start1="80" end1="80" start2="99" end2="106" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/main/java/UserInterface.java">
-      <ranges>
-        <range start1="12" end1="13" start2="12" end2="15" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="14" end1="16" start2="16" end2="18" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="17" end1="19" start2="19" end2="22" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="20" end1="22" start2="23" end2="25" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="23" end1="38" start2="26" end2="44" changelist="cf8059fa-0e91-4e9c-92d4-8bfb0c84a016" />
+        <range start1="0" end1="0" start2="0" end2="2" changelist="e780b553-eb8a-4abb-8f39-318a806f20c5" />
+        <range start1="8" end1="8" start2="10" end2="13" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
+        <range start1="9" end1="10" start2="14" end2="15" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
+        <range start1="13" end1="14" start2="18" end2="20" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
+        <range start1="16" end1="17" start2="22" end2="24" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
+        <range start1="19" end1="19" start2="26" end2="27" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
+        <range start1="22" end1="22" start2="30" end2="31" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
+        <range start1="25" end1="25" start2="34" end2="35" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
+        <range start1="28" end1="28" start2="38" end2="39" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
+        <range start1="33" end1="34" start2="44" end2="45" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
+        <range start1="36" end1="37" start2="47" end2="49" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
+        <range start1="39" end1="40" start2="51" end2="53" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
+        <range start1="42" end1="43" start2="55" end2="57" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
+        <range start1="46" end1="46" start2="60" end2="82" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
+        <range start1="47" end1="48" start2="83" end2="84" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
+        <range start1="49" end1="50" start2="85" end2="86" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
+        <range start1="53" end1="54" start2="89" end2="89" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
       </ranges>
     </file>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2VtGLZrjmBnM6QBB04YQRX13ae0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -79,21 +69,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -102,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1695647908825</updated>
-      <workItem from="1695647909857" duration="13891000" />
+      <workItem from="1695647909857" duration="39784000" />
     </task>
     <task id="LOCAL-00001" summary="Added: Added classes for Adventure del1">
       <option name="closed" value="true" />
@@ -120,7 +110,39 @@
       <option name="project" value="LOCAL" />
       <updated>1695724192234</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added: Adventure del 1 final version.">
+      <option name="closed" value="true" />
+      <created>1695732860916</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1695732860916</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added: Adventure del 1 final version.">
+      <option name="closed" value="true" />
+      <created>1695732868348</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1695732868348</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Changes by frede">
+      <option name="closed" value="true" />
+      <created>1695732873962</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1695732873962</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added: teleport method">
+      <option name="closed" value="true" />
+      <created>1695733000296</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1695733000296</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +162,30 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added: Added classes for Adventure del1" />
     <MESSAGE value="Added: Adventure del 1, version 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added: Adventure del 1, version 1" />
+    <MESSAGE value="Changes by Azra" />
+    <MESSAGE value="Added: Adventure del 1 final version." />
+    <MESSAGE value="Changes by frede" />
+    <MESSAGE value="Added: teleport method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added: teleport method" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/Room.java</url>
+          <line>68</line>
+          <properties class="Room" method="removeItemFromRoom">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/UserInterface.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

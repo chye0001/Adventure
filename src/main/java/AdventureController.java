@@ -34,11 +34,6 @@ public class AdventureController {
         player.teleport();
     }
 
-    public void showInventory() {
-        player.showInventory();
-
-        }
-
     public void takeItemToInventory(String input) {
         player.takeItem(input);
 
@@ -51,6 +46,10 @@ public class AdventureController {
 
     public ArrayList<Item> showItemsInRoom() {
        return player.getCurrentRoom().showItemsInRoom();
+    }
+
+    public ArrayList<Item> showInventory() {
+        return player.showInventory();
     }
 
 }

@@ -2,11 +2,9 @@ import java.util.ArrayList;
 
 public class Player {
 
-    Item item = new Item();
-
     private Room currentRoom;
     private Room lastTeleport;
-    private ArrayList<Item> inventory = new ArrayList<>(5);
+    private final ArrayList<Item> inventory = new ArrayList<>();
 
     public Player(){}
 
@@ -21,25 +19,25 @@ public class Player {
 
     public void moveAround(String direction) {
 
-        if (direction.equalsIgnoreCase("north")) {
+        if (direction.equalsIgnoreCase("north") || direction.equalsIgnoreCase("w")) {
             if (currentRoom.getNorth() == null) {
                 System.out.println("You can not go that way");
             } else
                 currentRoom = currentRoom.getNorth();
 
-        } else if (direction.equalsIgnoreCase("south")) {
+        } else if (direction.equalsIgnoreCase("south") || direction.equalsIgnoreCase("s")) {
             if (currentRoom.getSouth() == null) {
                 System.out.println("You can not go that way");
             } else
                 currentRoom = currentRoom.getSouth();
 
-        } else if (direction.equalsIgnoreCase("east")) {
+        } else if (direction.equalsIgnoreCase("east") || direction.equalsIgnoreCase("d")) {
             if (currentRoom.getEast() == null) {
                 System.out.println("You can not go that way");
             } else
                 currentRoom = currentRoom.getEast();
 
-        } else if (direction.equalsIgnoreCase("west")) {
+        } else if (direction.equalsIgnoreCase("west") || direction.equalsIgnoreCase("a")) {
             if (currentRoom.getWest() == null) {
                 System.out.println("You can not go that way");
             } else
@@ -63,27 +61,31 @@ public class Player {
     }
 
     public void takeItem(String takeItem) {
-        if (currentRoom.removeItemFromRoom(takeItem) != null) {
-            inventory.add(new Item(takeItem));
+        Item itemToTake = currentRoom.removeItemFromRoom(takeItem);
+        if (itemToTake != null) {
+            inventory.add(itemToTake);
+            System.out.println("\nYou picked up " + itemToTake);
         }
     }
 
-    public Item dropItem (String dropItem) {
+    public void dropItem (String dropItem) {
+        Item dropItemInRoom = null;
         for (Item item : inventory) {
-            if (item.getItemName().contains(dropItem)) {
-                inventory.remove(new Item(dropItem)); //Potentiel bug, vi instancerer nyt objekt, og fjerner det. Før var det kun en string i parameteren.
-                currentRoom.leftedItem(dropItem);
-                return item;
+            if (item.getItemName().toLowerCase().contains(dropItem.toLowerCase())) {
+                dropItemInRoom = item;
+                currentRoom.dropItemInRoom(item);
             }else
-                System.out.println("I can not find " + dropItem + "in the inventory...");
-        }       return null;
+                System.out.println("I can not find " + dropItem + " in the inventory...");
+        }
+        inventory.remove(dropItemInRoom);
+        if (inventory.isEmpty()) {
+            System.out.println("\nThere is nothing in the bag, so I can't drop " + dropItem + "\n");
+        }
     }
 
     public ArrayList<Item> showInventory(){
         return inventory;
     }
-
-
 }
 
 

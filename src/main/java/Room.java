@@ -2,15 +2,13 @@ import java.util.ArrayList;
 
 public class Room {
 
-    private String roomName;
-    private String description;
+    private final String roomName;
+    private final String description;
     private Room north;
     private Room south;
     private Room east;
     private Room west;
-    private ArrayList<Item> itemInRoom = new ArrayList<>(5);
-
-    Item item = new Item();
+    private final ArrayList<Item> itemInRoom = new ArrayList<>(5);
 
     public Room(String roomName, String description) {
         this.roomName = roomName;
@@ -58,8 +56,8 @@ public class Room {
         this.west = newRoom;
     }
 
-    public void leftedItem(String leftItem) {
-        itemInRoom.add(new Item(leftItem));
+    public void dropItemInRoom(Item dropedItem) {
+        itemInRoom.add(dropedItem);
     }
 
     public void addItemToRoom(Item addItem) {
@@ -68,12 +66,13 @@ public class Room {
 
     public Item removeItemFromRoom(String removeItem) {
         for (Item item : itemInRoom) {
-            if (item.getItemName().contains(removeItem)) {
-                itemInRoom.remove(new Item(removeItem));
+            if (item.getItemName().toLowerCase().contains(removeItem.toLowerCase())) {
+                itemInRoom.remove(item);
                 return item;
             } else
-                System.out.println(removeItem + "does not exist in the room..");
+                System.out.println(removeItem + " does not exist in the room..");
         }
+        System.out.println("I can't take that, because the room has been looted dry");
         return null;
     }
 

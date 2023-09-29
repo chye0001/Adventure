@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" name="Changes" comment="Added: teleport method">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
+    <list default="true" id="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" name="Changes" comment="Added: Adventure del 2 version 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Adventure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdventureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AdventureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdventureController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Room.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
-    </list>
-    <list id="e780b553-eb8a-4abb-8f39-318a806f20c5" name="Changes by Azra" comment="Changes by Azra">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Room.java" afterDir="false" />
-    </list>
-    <list id="693b6890-7d79-4552-b788-ccc64fec8687" name="Changes by frede" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Room.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,29 +25,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/Room.java">
-      <ranges>
-        <range start1="0" end1="0" start2="0" end2="2" changelist="e780b553-eb8a-4abb-8f39-318a806f20c5" />
-        <range start1="8" end1="8" start2="10" end2="13" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="9" end1="10" start2="14" end2="15" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
-        <range start1="13" end1="14" start2="18" end2="20" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
-        <range start1="16" end1="17" start2="22" end2="24" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
-        <range start1="19" end1="19" start2="26" end2="27" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
-        <range start1="22" end1="22" start2="30" end2="31" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
-        <range start1="25" end1="25" start2="34" end2="35" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
-        <range start1="28" end1="28" start2="38" end2="39" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
-        <range start1="33" end1="34" start2="44" end2="45" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
-        <range start1="36" end1="37" start2="47" end2="49" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
-        <range start1="39" end1="40" start2="51" end2="53" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
-        <range start1="42" end1="43" start2="55" end2="57" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
-        <range start1="46" end1="46" start2="60" end2="82" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="47" end1="48" start2="83" end2="84" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
-        <range start1="49" end1="50" start2="85" end2="86" changelist="693b6890-7d79-4552-b788-ccc64fec8687" />
-        <range start1="53" end1="54" start2="89" end2="89" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -92,7 +60,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1695647908825</updated>
-      <workItem from="1695647909857" duration="39784000" />
+      <workItem from="1695647909857" duration="41719000" />
+      <workItem from="1696008821457" duration="7413000" />
     </task>
     <task id="LOCAL-00001" summary="Added: Added classes for Adventure del1">
       <option name="closed" value="true" />
@@ -142,7 +111,31 @@
       <option name="project" value="LOCAL" />
       <updated>1695733000296</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added: Adventure del 2 version 1">
+      <option name="closed" value="true" />
+      <created>1695982265116</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1695982265117</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added: Adventure del 2 version 1">
+      <option name="closed" value="true" />
+      <created>1695982280248</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1695982280248</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Changes by frede">
+      <option name="closed" value="true" />
+      <created>1695982394824</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1695982394824</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,28 +155,29 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added: Added classes for Adventure del1" />
     <MESSAGE value="Added: Adventure del 1, version 1" />
-    <MESSAGE value="Changes by Azra" />
     <MESSAGE value="Added: Adventure del 1 final version." />
-    <MESSAGE value="Changes by frede" />
     <MESSAGE value="Added: teleport method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added: teleport method" />
+    <MESSAGE value="Changes by Azra" />
+    <MESSAGE value="Added: Adventure del 2 version 1" />
+    <MESSAGE value="Changes by frede" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by frede" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/UserInterface.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/Room.java</url>
-          <line>68</line>
-          <properties class="Room" method="removeItemFromRoom">
+          <url>file://$PROJECT_DIR$/src/main/java/AdventureController.java</url>
+          <line>41</line>
+          <properties class="AdventureController" method="dropItemFromInventory">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/UserInterface.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="11" />
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

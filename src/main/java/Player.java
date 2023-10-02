@@ -6,6 +6,7 @@ public class Player {
     private Room lastTeleport;
     private final ArrayList<Item> inventory = new ArrayList<>();
 
+
     public Player(){}
 
 
@@ -86,6 +87,11 @@ public class Player {
     public ArrayList<Item> showInventory(){
         return inventory;
     }
+
+    public ArrayList<Item> showItemsInRoom() {
+        return currentRoom.showItemsInRoom();
+    }
+
 }
 
 

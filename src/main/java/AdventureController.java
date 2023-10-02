@@ -45,7 +45,7 @@ public class AdventureController {
     }
 
     public ArrayList<Item> showItemsInRoom() {
-       return player.getCurrentRoom().showItemsInRoom();
+       return player.showItemsInRoom();
     }
 
     public ArrayList<Item> showInventory() {

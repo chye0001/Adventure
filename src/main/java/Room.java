@@ -15,6 +15,7 @@ public class Room {
         this.description = description;
     }
 
+    //getRoomName() og getDescription() kunne slettet da de ikke anvendes.
     public String getRoomName() {
         return roomName;
     }
@@ -56,6 +57,7 @@ public class Room {
         this.west = newRoom;
     }
 
+    //Denne metode kunne godt slettes og erstattes med "addItemToRoom(Item addItem)" der, hvor "dropItemInRoom(Item droppedItem)" benyttes.
     public void dropItemInRoom(Item dropedItem) {
         itemInRoom.add(dropedItem);
     }

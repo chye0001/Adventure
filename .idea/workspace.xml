@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" name="Changes" comment="Added: Adventure del 2 version 1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" name="Changes" comment="Added: package -&gt; docs -&gt; AdventureKlasseDiagram.pdf">
+      <change afterPath="$PROJECT_DIR$/src/test/java/MapTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <list id="6fcd7709-9013-4d17-a21f-44f90f8bf4bf" name="Changes by Azra" comment="" />
+    <list id="2875a2de-c032-4425-b1b8-cc690625482d" name="Changes by frede" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/AdventureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdventureController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -37,21 +41,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\chris\OneDrive - Københavns Erhvervsakademi\Desktop\School\1. Semester 2023\JavaProjecter\Adventure\docs" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -61,7 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1695647908825</updated>
       <workItem from="1695647909857" duration="41719000" />
-      <workItem from="1696008821457" duration="7413000" />
+      <workItem from="1696008821457" duration="12141000" />
     </task>
     <task id="LOCAL-00001" summary="Added: Added classes for Adventure del1">
       <option name="closed" value="true" />
@@ -135,7 +152,23 @@
       <option name="project" value="LOCAL" />
       <updated>1695982394824</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added: Adventure del 2 final version">
+      <option name="closed" value="true" />
+      <created>1696018137968</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696018137968</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added: package -&gt; docs -&gt; AdventureKlasseDiagram.pdf">
+      <option name="closed" value="true" />
+      <created>1696249752231</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1696249752231</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,14 +193,16 @@
     <MESSAGE value="Changes by Azra" />
     <MESSAGE value="Added: Adventure del 2 version 1" />
     <MESSAGE value="Changes by frede" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by frede" />
+    <MESSAGE value="Added: Adventure del 2 final version" />
+    <MESSAGE value="Added: package -&gt; docs -&gt; AdventureKlasseDiagram.pdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added: package -&gt; docs -&gt; AdventureKlasseDiagram.pdf" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/UserInterface.java</url>
-          <line>46</line>
+          <line>48</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">

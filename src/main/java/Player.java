@@ -52,7 +52,9 @@ public class Player {
         moveAround(input);
     }
 
-    public void setCurrentRoom(Room setRoom){ this.currentRoom = setRoom;}
+    public void setCurrentRoom(Room setRoom){
+        this.currentRoom = setRoom;
+    }
 
     public void setLastTeleport(Room setLastTeleport){
         this.lastTeleport = setLastTeleport;

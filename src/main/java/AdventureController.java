@@ -36,7 +36,6 @@ public class AdventureController {
 
     public void takeItemToInventory(String input) {
         player.takeItem(input);
-
         }
 
     public void dropItemFromInventory(String input) {

@@ -28,7 +28,7 @@ public class Map {
         room2.setSouth(null);
         room2.setWest(room1);
         room2.addItemToRoom(new Item("Pile of Bones"));
-        room2.addItemToRoom(new Item("Rose"));
+        room2.addItemToRoom(new Food("Rose", -5));
 
 
         room3.setEast(null);
@@ -57,6 +57,7 @@ public class Map {
         room6.setSouth(room9);
         room6.setWest(null);
         room6.addItemToRoom(new Item("Pile of bones"));
+        room6.addItemToRoom((new Food("Frog Legs", +7)));
 
         room7.setEast(room8);
         room7.setNorth(room4);
@@ -74,7 +75,7 @@ public class Map {
         room9.setNorth(room6);
         room9.setSouth(null);
         room9.setWest(room8);
-        room9.addItemToRoom(new Item("Rose"));
+        room9.addItemToRoom(new Food ("Rose",-5));
 
         currentRoom = room1;
         lastTeleport = room1;

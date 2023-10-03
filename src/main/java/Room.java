@@ -66,6 +66,10 @@ public class Room {
         itemInRoom.add(addItem);
     }
 
+    /*public void addFoodToRoom(Food addFood) {
+        itemInRoom.add(addFood);
+    }*/
+
     public Item removeItemFromRoom(String removeItem) {
         for (Item item : itemInRoom) {
             if (item.getItemName().toLowerCase().contains(removeItem.toLowerCase())) {

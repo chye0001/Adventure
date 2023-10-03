@@ -52,4 +52,11 @@ public class AdventureController {
         return player.showInventory();
     }
 
+    public ReturnMessage eat(String foodToEat) {
+        return player.eatFood(foodToEat);
+    }
+
+    public int getHealth() {
+       return player.getHealth();
+    }
 }

@@ -4,15 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" name="Changes" comment="Added: package -&gt; docs -&gt; AdventureKlasseDiagram.pdf">
-      <change afterPath="$PROJECT_DIR$/src/test/java/MapTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/PlayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
-    <list id="6fcd7709-9013-4d17-a21f-44f90f8bf4bf" name="Changes by Azra" comment="" />
-    <list id="2875a2de-c032-4425-b1b8-cc690625482d" name="Changes by frede" comment="">
+    <list default="true" id="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" name="Changes" comment="Added: refactor adventure del 2 final version + added jUnit test on play and map">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Food.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ReturnMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/AdventureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdventureController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PlayerTest.java" afterDir="false" />
+    </list>
+    <list id="e3a27980-54e8-43fa-a524-01733d238ef0" name="Changes by Azra" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
+    </list>
+    <list id="1887f750-8b66-4530-a37b-3a5d01157815" name="Changes by frede" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Room.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,13 +30,33 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/Player.java">
+      <ranges>
+        <range start1="7" end1="7" start2="7" end2="8" changelist="e3a27980-54e8-43fa-a524-01733d238ef0" />
+        <range start1="58" end1="58" start2="59" end2="62" changelist="e3a27980-54e8-43fa-a524-01733d238ef0" />
+        <range start1="76" end1="77" start2="80" end2="80" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
+        <range start1="86" end1="86" start2="89" end2="108" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
+        <range start1="93" end1="94" start2="115" end2="115" changelist="e3a27980-54e8-43fa-a524-01733d238ef0" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/Map.java">
+      <ranges>
+        <range start1="30" end1="31" start2="30" end2="31" changelist="1887f750-8b66-4530-a37b-3a5d01157815" />
+        <range start1="38" end1="38" start2="38" end2="39" changelist="e3a27980-54e8-43fa-a524-01733d238ef0" />
+        <range start1="44" end1="44" start2="45" end2="47" changelist="e3a27980-54e8-43fa-a524-01733d238ef0" />
+        <range start1="56" end1="56" start2="59" end2="60" changelist="1887f750-8b66-4530-a37b-3a5d01157815" />
+        <range start1="73" end1="74" start2="77" end2="78" changelist="1887f750-8b66-4530-a37b-3a5d01157815" />
+      </ranges>
+    </file>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -50,6 +78,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/chris/OneDrive - Københavns Erhvervsakademi/Desktop/School/1. Semester 2023/JavaProjecter/SuperHero",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -78,7 +107,7 @@
       <option name="presentableId" value="Default" />
       <updated>1695647908825</updated>
       <workItem from="1695647909857" duration="41719000" />
-      <workItem from="1696008821457" duration="12141000" />
+      <workItem from="1696008821457" duration="24091000" />
     </task>
     <task id="LOCAL-00001" summary="Added: Added classes for Adventure del1">
       <option name="closed" value="true" />
@@ -168,7 +197,23 @@
       <option name="project" value="LOCAL" />
       <updated>1696249752231</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added: refactor adventure del 2 final version + added jUnit test on play and map">
+      <option name="closed" value="true" />
+      <created>1696254736846</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1696254736846</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Changes by frede">
+      <option name="closed" value="true" />
+      <created>1696254753418</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1696254753418</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,29 +237,10 @@
     <MESSAGE value="Added: teleport method" />
     <MESSAGE value="Changes by Azra" />
     <MESSAGE value="Added: Adventure del 2 version 1" />
-    <MESSAGE value="Changes by frede" />
     <MESSAGE value="Added: Adventure del 2 final version" />
     <MESSAGE value="Added: package -&gt; docs -&gt; AdventureKlasseDiagram.pdf" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added: package -&gt; docs -&gt; AdventureKlasseDiagram.pdf" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/UserInterface.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/AdventureController.java</url>
-          <line>41</line>
-          <properties class="AdventureController" method="dropItemFromInventory">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Added: refactor adventure del 2 final version + added jUnit test on play and map" />
+    <MESSAGE value="Changes by frede" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by frede" />
   </component>
 </project>

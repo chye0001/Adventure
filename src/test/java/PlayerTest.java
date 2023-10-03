@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
 
-
     Player player;
     private Room room1;
     private Room room2;
@@ -91,7 +90,7 @@ class PlayerTest {
     void show_Inventory_With_Nothing_In_It() {
         //Playerens inventory er 0 til at starte med.
 
-        ArrayList<Item> expectedInventory = new ArrayList<>(0);
+        ArrayList<Item> expectedInventory = inventory;
         ArrayList<Item> actualInventory = player.showInventory();
 
         assertEquals(expectedInventory, actualInventory);

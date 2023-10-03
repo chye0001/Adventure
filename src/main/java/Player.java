@@ -9,7 +9,6 @@ public class Player {
 
     public Player(){}
 
-
     public void teleport() {
         Room tempCurrentRoom = currentRoom;
         currentRoom = lastTeleport;
@@ -82,6 +81,25 @@ public class Player {
         if (inventory.isEmpty()) {
             System.out.println("\nThere is nothing in the bag, so I can't drop " + dropItem + "\n");
         }
+    }
+
+
+    public ReturnMessage eatFood(String eatFood) {
+        if (inventory.isEmpty()) {
+            return ReturnMessage.CANT_FIND;
+        } else {
+            for (Item item : inventory) {
+                if (item.getItemName().toLowerCase().contains(eatFood.toLowerCase())) {
+                    if (item instanceof Food food) {
+                        health += food.getHealthPoints();
+                        inventory.remove(food);
+                        return ReturnMessage.OK;
+                    } else
+                        return ReturnMessage.NOT_EATABLE;
+                } else
+                    return ReturnMessage.CANT_FIND;
+            }
+        }return ReturnMessage.CANT_FIND;
     }
 
     public ArrayList<Item> showInventory(){

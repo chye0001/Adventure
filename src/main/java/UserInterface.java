@@ -6,17 +6,18 @@ public class UserInterface {
     String input;
 
     AdventureController controller;
+
     public UserInterface(AdventureController controller) {
         this.controller = controller;
     }
 
     public void startGame() {
 
-            controller.buildMap();
-            controller.setCurrentRoom();
-            controller.setLastTeleport();
-            System.out.println("\nWelcome to the adventure game!");
-            System.out.println("Write help for a list of instructions\n");
+        controller.buildMap();
+        controller.setCurrentRoom();
+        controller.setLastTeleport();
+        System.out.println("\nWelcome to the adventure game!");
+        System.out.println("Write help for a list of instructions\n");
 
 
         do {
@@ -31,9 +32,9 @@ public class UserInterface {
             String firstInput = "";
             String secondInput = "";
             String[] commands = input.split("\\s+");
-            if (commands.length == 1){
+            if (commands.length == 1) {
                 firstInput = commands[0];
-            }else if (commands.length == 2) {
+            } else if (commands.length == 2) {
                 firstInput = commands[0];
                 secondInput = commands[1];
             }
@@ -47,6 +48,28 @@ public class UserInterface {
                 case "inventory" -> System.out.println("\nIn my bag I see: \n" + controller.showInventory() + "\n");
                 case "take" -> controller.takeItemToInventory(secondInput);
                 case "drop" -> controller.dropItemFromInventory(secondInput);
+                case "eat" -> {
+                    controller.eat(secondInput);
+                    if (controller.eat(secondInput) == ReturnMessage.OK) {
+                        System.out.println("*eating " + secondInput + "*");
+                    } else if (controller.eat(secondInput) == ReturnMessage.CANT_FIND) {
+                        System.out.println("I can't find " + secondInput + " in the inventory");
+                    } else if (controller.eat(secondInput) == ReturnMessage.NOT_EATABLE) {
+                        System.out.println(secondInput + " is not edible...\n");
+                    }
+                }
+                case "health" -> {
+                    controller.getHealth();
+                    if (controller.getHealth() == 100 && controller.getHealth()>50) {
+                        System.out.println("Health: " + controller.getHealth() + " - you are in good health, but avoid fighting right now.\n");
+                    } else if (controller.getHealth() <= 50 && controller.getHealth() >35) {
+                        System.out.println("Health: " + controller.getHealth() + " - you are not in the best of shape. You should eat some food and rest\n");
+                    } else if (controller.getHealth()<=35 && controller.getHealth()>20) {
+                        System.out.println("Health: " + controller.getHealth() + " - you are in poor condition, consider eating some food and rest up\n");
+                    } else if (controller.getHealth() <= 20 && controller.getHealth() > 0) {
+                        System.out.println("Health: " + controller.getHealth() + " - you are in extremely poor condition, eat tons of food and take a long rest\n");
+                    }
+                }
                 case "help" -> System.out.println("""
                         If you want to move North, write: "North"
                         If you want to move East, then write "East"
@@ -58,7 +81,8 @@ public class UserInterface {
                         If you want to know what room you're in write: "look"
                         If you wish to end the game write: "exit"
                         """);
-                case "look" -> System.out.println("It seems like this room contains: \n" + controller.showItemsInRoom());
+                case "look" ->
+                        System.out.println("It seems like this room contains: \n" + controller.showItemsInRoom());
                 case "exit" -> System.out.println("thank you for playing ");
                 default -> System.out.println("Not a known command!. Write help for instructions");
             }

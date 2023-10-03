@@ -49,13 +49,23 @@ public class UserInterface {
                 case "take" -> controller.takeItemToInventory(secondInput);
                 case "drop" -> controller.dropItemFromInventory(secondInput);
                 case "eat" -> {
-                    controller.eat(secondInput);
-                    if (controller.eat(secondInput) == ReturnMessage.OK) {
+                    ReturnMessage returnValueOfFood = controller.eat(secondInput);
+                    if (returnValueOfFood == ReturnMessage.OK) {
                         System.out.println("*eating " + secondInput + "*");
-                    } else if (controller.eat(secondInput) == ReturnMessage.CANT_FIND) {
+                    } else if (returnValueOfFood == ReturnMessage.CANT_FIND) {
                         System.out.println("I can't find " + secondInput + " in the inventory");
-                    } else if (controller.eat(secondInput) == ReturnMessage.NOT_EATABLE) {
+                    } else if (returnValueOfFood == ReturnMessage.NOT_EATABLE) {
                         System.out.println(secondInput + " is not edible...\n");
+                    }
+                }
+                case "drink" ->{
+                    ReturnMessage returnValueOfLiquid = controller.drink(secondInput);
+                    if (returnValueOfLiquid == ReturnMessage.OK) {
+                        System.out.println("*drinking " + secondInput + "*");
+                    } else if (returnValueOfLiquid == ReturnMessage.CANT_FIND) {
+                        System.out.println("I can't find " + secondInput + " in the inventory");
+                    } else if (returnValueOfLiquid == ReturnMessage.NOT_EATABLE) {
+                        System.out.println(secondInput + " is not drinkable...\n");
                     }
                 }
                 case "health" -> {

@@ -105,6 +105,25 @@ public class Player {
         }return ReturnMessage.CANT_FIND;
     }
 
+    public ReturnMessage drinkLiquid(String drinkLiquid) {
+        if (inventory.isEmpty()) {
+            return ReturnMessage.CANT_FIND;
+        } else {
+            for (Item item : inventory) {
+                if (item.getItemName().toLowerCase().contains(drinkLiquid.toLowerCase())) {
+                    if (item instanceof Liquid) {
+                        Liquid liquid = (Liquid)item;
+                        health += liquid.getHealthPoints();
+                        inventory.remove(liquid);
+                        return ReturnMessage.OK;
+                    } else
+                        return ReturnMessage.NOT_EATABLE;
+                } else
+                    return ReturnMessage.CANT_FIND;
+            }
+        }return ReturnMessage.CANT_FIND;
+    }
+
     public ArrayList<Item> showInventory(){
         return inventory;
     }
@@ -113,9 +132,3 @@ public class Player {
         return currentRoom.showItemsInRoom();
     }
 }
-
-
-
-
-
-

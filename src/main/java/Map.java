@@ -21,6 +21,8 @@ public class Map {
         room1.setSouth(room4);
         room1.setWest(null);
         room1.addItemToRoom(new Item("Long sword"));
+        room1.addItemToRoom(new Liquid("Bottle of water", 0));
+        room1.addItemToRoom(new Liquid("Bottle of piss", -3));
 
 
         room2.setEast(room3);

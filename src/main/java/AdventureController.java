@@ -55,6 +55,10 @@ public class AdventureController {
         return player.eatFood(foodToEat);
     }
 
+    public ReturnMessage drink(String liquidToDrink){
+        return player.drinkLiquid(liquidToDrink);
+    }
+
     public int getHealth() {
        return player.getHealth();
     }

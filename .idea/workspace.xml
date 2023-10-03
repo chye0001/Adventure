@@ -4,23 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" name="Changes" comment="Added: refactor adventure del 2 final version + added jUnit test on play and map">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Food.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ReturnMessage.java" afterDir="false" />
+    <list default="true" id="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" name="Changes" comment="Added: Adventure del 3 finished + added ENUM ReturnMessage.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Consumable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Liquid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/AdventureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AdventureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/PlayerTest.java" afterDir="false" />
-    </list>
-    <list id="e3a27980-54e8-43fa-a524-01733d238ef0" name="Changes by Azra" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
-    </list>
-    <list id="1887f750-8b66-4530-a37b-3a5d01157815" name="Changes by frede" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Food.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UserInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,26 +31,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/Player.java">
-      <ranges>
-        <range start1="7" end1="7" start2="7" end2="8" changelist="e3a27980-54e8-43fa-a524-01733d238ef0" />
-        <range start1="58" end1="58" start2="59" end2="62" changelist="e3a27980-54e8-43fa-a524-01733d238ef0" />
-        <range start1="76" end1="77" start2="80" end2="80" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="86" end1="86" start2="89" end2="108" changelist="67a45c75-9c7e-48d3-98d8-ea839b45cb3c" />
-        <range start1="93" end1="94" start2="115" end2="115" changelist="e3a27980-54e8-43fa-a524-01733d238ef0" />
-      </ranges>
-    </file>
-    <file path="$PROJECT_DIR$/src/main/java/Map.java">
-      <ranges>
-        <range start1="30" end1="31" start2="30" end2="31" changelist="1887f750-8b66-4530-a37b-3a5d01157815" />
-        <range start1="38" end1="38" start2="38" end2="39" changelist="e3a27980-54e8-43fa-a524-01733d238ef0" />
-        <range start1="44" end1="44" start2="45" end2="47" changelist="e3a27980-54e8-43fa-a524-01733d238ef0" />
-        <range start1="56" end1="56" start2="59" end2="60" changelist="1887f750-8b66-4530-a37b-3a5d01157815" />
-        <range start1="73" end1="74" start2="77" end2="78" changelist="1887f750-8b66-4530-a37b-3a5d01157815" />
-      </ranges>
-    </file>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -107,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1695647908825</updated>
       <workItem from="1695647909857" duration="41719000" />
-      <workItem from="1696008821457" duration="24091000" />
+      <workItem from="1696008821457" duration="28342000" />
     </task>
     <task id="LOCAL-00001" summary="Added: Added classes for Adventure del1">
       <option name="closed" value="true" />
@@ -213,7 +187,31 @@
       <option name="project" value="LOCAL" />
       <updated>1696254753418</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added: Adventure del 3 finished + added ENUM ReturnMessage.">
+      <option name="closed" value="true" />
+      <created>1696341862924</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1696341862925</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Changes by Azra">
+      <option name="closed" value="true" />
+      <created>1696341880175</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1696341880175</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Changes by frede">
+      <option name="closed" value="true" />
+      <created>1696341898586</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1696341898586</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,12 +233,28 @@
     <MESSAGE value="Added: Adventure del 1, version 1" />
     <MESSAGE value="Added: Adventure del 1 final version." />
     <MESSAGE value="Added: teleport method" />
-    <MESSAGE value="Changes by Azra" />
     <MESSAGE value="Added: Adventure del 2 version 1" />
     <MESSAGE value="Added: Adventure del 2 final version" />
     <MESSAGE value="Added: package -&gt; docs -&gt; AdventureKlasseDiagram.pdf" />
     <MESSAGE value="Added: refactor adventure del 2 final version + added jUnit test on play and map" />
+    <MESSAGE value="Changes by Azra" />
+    <MESSAGE value="Added: Adventure del 3 finished + added ENUM ReturnMessage." />
     <MESSAGE value="Changes by frede" />
     <option name="LAST_COMMIT_MESSAGE" value="Changes by frede" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/Player.java</url>
+          <line>89</line>
+          <properties class="Player" method="eatFood">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

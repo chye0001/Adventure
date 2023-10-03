@@ -1,14 +1,6 @@
-public class Food extends Item{
-
-    protected int healthPoints;
+public class Food extends Consumable{
 
     Food(String itemName, int healthPoints) {
-        super(itemName);
-        this.healthPoints = healthPoints;
+        super(itemName, healthPoints);
     }
-    public int getHealthPoints(){
-        return healthPoints;
-    }
-
-
 }

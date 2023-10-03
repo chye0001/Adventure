@@ -75,8 +75,7 @@ public class Room {
             if (item.getItemName().toLowerCase().contains(removeItem.toLowerCase())) {
                 itemInRoom.remove(item);
                 return item;
-            } else
-                System.out.println(removeItem + " does not exist in the room..");
+            }
         }
         System.out.println("I can't take that, because the room has been looted dry");
         return null;

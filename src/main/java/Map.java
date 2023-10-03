@@ -37,11 +37,14 @@ public class Map {
         room3.setWest(room2);
         room3.addItemToRoom(new Item("..."));
 
+
         room4.setEast(null);
         room4.setNorth(room1);
         room4.setSouth(room7);
         room4.setWest(null);
         room4.addItemToRoom(new Item("Magic Orb"));
+        room4.addItemToRoom(new Food("Apple", +10));
+
 
         room5.setEast(null);
         room5.setNorth(null);

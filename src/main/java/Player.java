@@ -5,7 +5,7 @@ public class Player {
     private Room currentRoom;
     private Room lastTeleport;
     private final ArrayList<Item> inventory = new ArrayList<>();
-
+    private int health = 50;
 
     public Player(){}
 
@@ -54,6 +54,9 @@ public class Player {
 
     public void setCurrentRoom(Room setRoom){
         this.currentRoom = setRoom;
+    }
+    public int getHealth(){
+        return health;
     }
 
     public void setLastTeleport(Room setLastTeleport){
@@ -109,7 +112,6 @@ public class Player {
     public ArrayList<Item> showItemsInRoom() {
         return currentRoom.showItemsInRoom();
     }
-
 }
 
 

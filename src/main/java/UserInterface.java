@@ -117,6 +117,27 @@ public class UserInterface {
                         System.out.println("Health: " + controller.getHealth() + " - you are in extremely poor condition, eat tons of food and take a long rest\n");
                     }
                 }
+                case "equip" -> {
+                    ReturnMessage isequipped = controller.equipWeapon(secondInput);
+                    if (isequipped == ReturnMessage.IS_EQUIPPED) {
+                        System.out.println("You have equipped " + secondInput);
+                    }
+                    if (isequipped == ReturnMessage.IS_NOT_A_WEAPON) {
+                        System.out.println("You can not equip " + secondInput + " because it's not a weapon");
+                    } else if (isequipped == ReturnMessage.CANT_FIND)
+                        System.out.println("No weapon was found with the name" + secondInput + "in the inventory");
+
+                }
+                case "attack", "use" -> {
+                    ReturnMessage checkWeapon = controller.attack();
+                    if (checkWeapon == ReturnMessage.ATTACK) {
+                        System.out.println("I use my " + secondInput);
+                        System.out.println("Damage dealt: " + controller.getDamageDone() + "\n");
+                    } else if (checkWeapon == ReturnMessage.NO_AMMO) {
+                        System.out.println("You dont have any ammo left, find some!");
+                    } else if (checkWeapon == ReturnMessage.IS_NOT_EQUIPPED)
+                        System.out.println("You have not equipped a weapon...");
+                }
                 case "help" -> System.out.println("""
                         If you want to move North, write: "North"
                         If you want to move East, then write "East"

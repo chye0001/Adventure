@@ -70,4 +70,16 @@ public class AdventureController {
     public int getHealth() {
        return player.getHealth();
     }
+
+    public ReturnMessage attack() {
+        return player.attack();
+    }
+
+    public int getDamageDone() {
+        return player.getDamageDone();
+    }
+
+    public ReturnMessage equipWeapon(String weaponToEquip) {
+        return player.equipWeapon(weaponToEquip);
+    }
 }

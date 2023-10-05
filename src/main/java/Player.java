@@ -1,3 +1,4 @@
+import java.net.http.WebSocket;
 import java.util.ArrayList;
 
 public class Player {
@@ -6,6 +7,8 @@ public class Player {
     private Room lastTeleport;
     private final ArrayList<Item> inventory = new ArrayList<>();
     private int health = 50;
+    private Weapon equippedWeapon;
+    private ReturnMessage checkWeapon;
     //private Item foodToEat;
 
     public Player() {

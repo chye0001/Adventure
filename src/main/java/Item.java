@@ -1,19 +1,16 @@
 public class Item {
 
-    private String itemName;
+    private final String ITEM_NAME;
 
-    public Item (){}
-    public Item(String itemName){
-        this.itemName = itemName;
+    public Item(String ITEM_NAME){
+        this.ITEM_NAME = ITEM_NAME;
     }
 
-    public String getItemName(){
-        return itemName;
+    public String getITEM_NAME(){
+        return ITEM_NAME;
     }
 
     public String toString() {
-        return itemName;
+        return ITEM_NAME;
     }
 }
-
-

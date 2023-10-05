@@ -51,13 +51,23 @@ public class AdventureController {
         return player.showInventory();
     }
 
-    public ReturnMessage eat(String foodToEat) {
-        return player.eatFood(foodToEat);
+    public ReturnMessage eat(String foodToEat) { // Potentiel cleanup i koden
+        return player.eatFood(foodToEat);        // gør eat() metoden void
     }
 
-    public ReturnMessage drink(String liquidToDrink){
-        return player.drinkLiquid(liquidToDrink);
+    public ReturnMessage tryToEat(String tryToEatFood) { // Udvidelse: Klogere håndtering af giftigt mad (i brugerfladen)
+        return player.tryToEatFood(tryToEatFood);
     }
+
+    public ReturnMessage drink(String liquidToDrink){ //Mulighed for cleanup i koden
+        return player.drinkLiquid(liquidToDrink);     //gør drink() void
+    }
+
+    public ReturnMessage tryToDrink(String tryToDrinkLiquid) {// Udvidelse: Klogere håndtering af giftigt mad (i brugerfladen) & Flere typer "consumables"
+        return player.tryTodrinkLiquid(tryToDrinkLiquid);
+    }
+
+    publi
 
     public int getHealth() {
        return player.getHealth();

@@ -59,7 +59,7 @@ public class Map {
         room6.setSouth(room9);
         room6.setWest(null);
         room6.addItemToRoom(new Item("Pile of bones"));
-        room6.addItemToRoom((new Food("Frog Legs", +7)));
+        room6.addItemToRoom((new Food("Frog Legs", 7)));
 
         room7.setEast(room8);
         room7.setNorth(room4);

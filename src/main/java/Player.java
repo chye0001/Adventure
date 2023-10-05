@@ -6,8 +6,10 @@ public class Player {
     private Room lastTeleport;
     private final ArrayList<Item> inventory = new ArrayList<>();
     private int health = 50;
+    //private Item foodToEat;
 
-    public Player(){}
+    public Player() {
+    }
 
     public void teleport() {
         Room tempCurrentRoom = currentRoom;
@@ -44,6 +46,7 @@ public class Player {
                 currentRoom = currentRoom.getWest();
         }
     }
+
     public Room getCurrentRoom() {
         return currentRoom;
     }
@@ -52,14 +55,15 @@ public class Player {
         moveAround(input);
     }
 
-    public void setCurrentRoom(Room setRoom){
+    public void setCurrentRoom(Room setRoom) {
         this.currentRoom = setRoom;
     }
-    public int getHealth(){
+
+    public int getHealth() {
         return health;
     }
 
-    public void setLastTeleport(Room setLastTeleport){
+    public void setLastTeleport(Room setLastTeleport) {
         this.lastTeleport = setLastTeleport;
     }
 
@@ -71,13 +75,13 @@ public class Player {
         }
     }
 
-    public void dropItem (String dropItem) {
+    public void dropItem(String dropItem) {
         Item dropItemInRoom = null;
         for (Item item : inventory) {
-            if (item.getItemName().toLowerCase().contains(dropItem.toLowerCase())) {
+            if (item.getITEM_NAME().toLowerCase().contains(dropItem.toLowerCase())) {
                 dropItemInRoom = item;
                 currentRoom.dropItemInRoom(item);
-            }else
+            } else
                 System.out.println("I can not find " + dropItem + " in the inventory...");
         }
         inventory.remove(dropItemInRoom);
@@ -86,45 +90,93 @@ public class Player {
         }
     }
 
-
     public ReturnMessage eatFood(String eatFood) {
         if (inventory.isEmpty()) {
             return ReturnMessage.CANT_FIND;
         } else {
             for (Item item : inventory) {
-                if (item.getItemName().toLowerCase().contains(eatFood.toLowerCase())) {
+                if (item.getITEM_NAME().toLowerCase().contains(eatFood.toLowerCase())) {
                     if (item instanceof Food food) {
                         health += food.getHealthPoints();
                         inventory.remove(food);
-                        return ReturnMessage.OK;
+                        return ReturnMessage.EDIBLE;
                     } else
-                        return ReturnMessage.NOT_EATABLE;
-                } else
-                    return ReturnMessage.CANT_FIND;
+                        return ReturnMessage.NOT_EDIBLE;
+                }
             }
-        }return ReturnMessage.CANT_FIND;
+        }
+        return ReturnMessage.CANT_FIND;
     }
 
+    // Udvidelse: Flere typer af "consumables"
     public ReturnMessage drinkLiquid(String drinkLiquid) {
         if (inventory.isEmpty()) {
             return ReturnMessage.CANT_FIND;
         } else {
             for (Item item : inventory) {
-                if (item.getItemName().toLowerCase().contains(drinkLiquid.toLowerCase())) {
+                if (item.getITEM_NAME().toLowerCase().contains(drinkLiquid.toLowerCase())) {
                     if (item instanceof Liquid) {
-                        Liquid liquid = (Liquid)item;
+                        Liquid liquid = (Liquid) item;
                         health += liquid.getHealthPoints();
                         inventory.remove(liquid);
-                        return ReturnMessage.OK;
+                        return ReturnMessage.EDIBLE;
                     } else
-                        return ReturnMessage.NOT_EATABLE;
-                } else
-                    return ReturnMessage.CANT_FIND;
+                        return ReturnMessage.NOT_DRINKABLE;
+                }
             }
-        }return ReturnMessage.CANT_FIND;
+        }
+        return ReturnMessage.CANT_FIND;
     }
 
-    public ArrayList<Item> showInventory(){
+    // UDVIDELSE - Klogere håndtering af giftig mad (i brugerfladen)
+    public ReturnMessage tryToEatFood(String eatFood) {
+        if (inventory.isEmpty()) {
+            return ReturnMessage.CANT_FIND;
+        } else {
+            for (Item item : inventory) {
+                if (item.getITEM_NAME().toLowerCase().contains(eatFood.toLowerCase())) {
+                    if (item instanceof Food food) {
+                        if (food.getHealthPoints() < 0) {
+                            return ReturnMessage.REALLY_EAT;
+                        } else {
+                            health += food.getHealthPoints();
+                            inventory.remove(food);
+                            return ReturnMessage.EDIBLE;
+                        }
+                    } else
+                        return ReturnMessage.NOT_EDIBLE;
+                }
+            }
+        }
+        return ReturnMessage.CANT_FIND;
+    }
+
+
+    // UDVIDELSE - Klogere håndtering af giftig mad (i brugerfladen)
+    public ReturnMessage tryTodrinkLiquid(String drinkLiquid) {
+        if (inventory.isEmpty()) {
+            return ReturnMessage.CANT_FIND;
+        } else {
+            for (Item item : inventory) {
+                if (item.getITEM_NAME().toLowerCase().contains(drinkLiquid.toLowerCase())) {
+                    if (item instanceof Liquid) {
+                        Liquid liquid = (Liquid) item;
+                        if (liquid.healthPoints < 0) {
+                            return ReturnMessage.REALLY_DRINK;
+                        } else {
+                            health += liquid.getHealthPoints();
+                            inventory.remove(liquid);
+                            return ReturnMessage.EDIBLE;
+                        }
+                    } else
+                        return ReturnMessage.NOT_DRINKABLE;
+                }
+            }
+        }
+        return ReturnMessage.CANT_FIND;
+    }
+
+    public ArrayList<Item> showInventory() {
         return inventory;
     }
 

@@ -49,32 +49,68 @@ public class UserInterface {
                 case "take" -> controller.takeItemToInventory(secondInput);
                 case "drop" -> controller.dropItemFromInventory(secondInput);
                 case "eat" -> {
-                    ReturnMessage returnValueOfFood = controller.eat(secondInput);
-                    if (returnValueOfFood == ReturnMessage.OK) {
+                    ReturnMessage returnValueOfFood = controller.tryToEat(secondInput);
+
+                    // UDVIDELSE - Klogere håndtering af giftig mad (i brugerfladen)
+                    String answer = "";
+                    if (returnValueOfFood == ReturnMessage.REALLY_EAT) {
+                        System.out.println("That does not look to healthy do you really want to eat it? [yes/no]");
+                        while (!scanner.hasNextLine()) {
+                            System.out.println("You cant enter anything but characters");
+                            scanner.nextLine();
+                        }
+                        answer = scanner.nextLine();
+
+                    } if (answer.equalsIgnoreCase("yes")) {
+                        controller.eat(secondInput);
+                        System.out.println("*eating " + secondInput + "*");
+                    } else if (returnValueOfFood == ReturnMessage.REALLY_EAT)
+                        System.out.println("okay i wont eat it anyway...");
+
+
+                    if (returnValueOfFood == ReturnMessage.EDIBLE) {
                         System.out.println("*eating " + secondInput + "*");
                     } else if (returnValueOfFood == ReturnMessage.CANT_FIND) {
                         System.out.println("I can't find " + secondInput + " in the inventory");
-                    } else if (returnValueOfFood == ReturnMessage.NOT_EATABLE) {
+                    } else if (returnValueOfFood == ReturnMessage.NOT_EDIBLE) {
                         System.out.println(secondInput + " is not edible...\n");
                     }
                 }
-                case "drink" ->{
-                    ReturnMessage returnValueOfLiquid = controller.drink(secondInput);
-                    if (returnValueOfLiquid == ReturnMessage.OK) {
+                case "drink" -> {
+                    ReturnMessage returnValueOfLiquid = controller.tryToDrink(secondInput);
+
+                    // UDVIDELSE - Klogere håndtering af giftig mad (i brugerfladen)
+                    String answer = "";
+                    if (returnValueOfLiquid == ReturnMessage.REALLY_DRINK) {
+                        System.out.println("That does not look to healthy do you really want to drink that? [yes/no]");
+                        while (!scanner.hasNextLine()) {
+                            System.out.println("You cant enter anything but characters");
+                            scanner.nextLine();
+                        }
+                        answer = scanner.nextLine();
+                    }
+                    if (answer.equalsIgnoreCase("yes")) {
+                        controller.drink(secondInput);
+                        System.out.println("*drinking " + secondInput + "*");
+                    } else if (returnValueOfLiquid == ReturnMessage.REALLY_DRINK)
+                        System.out.println("okay i won't drink it anyway...");
+
+
+                    if (returnValueOfLiquid == ReturnMessage.EDIBLE) {
                         System.out.println("*drinking " + secondInput + "*");
                     } else if (returnValueOfLiquid == ReturnMessage.CANT_FIND) {
                         System.out.println("I can't find " + secondInput + " in the inventory");
-                    } else if (returnValueOfLiquid == ReturnMessage.NOT_EATABLE) {
+                    } else if (returnValueOfLiquid == ReturnMessage.NOT_DRINKABLE) {
                         System.out.println(secondInput + " is not drinkable...\n");
                     }
                 }
                 case "health" -> {
                     controller.getHealth();
-                    if (controller.getHealth() == 100 && controller.getHealth()>50) {
+                    if (controller.getHealth() <= 100 && controller.getHealth() > 50) {
                         System.out.println("Health: " + controller.getHealth() + " - you are in good health, but avoid fighting right now.\n");
-                    } else if (controller.getHealth() <= 50 && controller.getHealth() >35) {
+                    } else if (controller.getHealth() <= 50 && controller.getHealth() > 35) {
                         System.out.println("Health: " + controller.getHealth() + " - you are not in the best of shape. You should eat some food and rest\n");
-                    } else if (controller.getHealth()<=35 && controller.getHealth()>20) {
+                    } else if (controller.getHealth() <= 35 && controller.getHealth() > 20) {
                         System.out.println("Health: " + controller.getHealth() + " - you are in poor condition, consider eating some food and rest up\n");
                     } else if (controller.getHealth() <= 20 && controller.getHealth() > 0) {
                         System.out.println("Health: " + controller.getHealth() + " - you are in extremely poor condition, eat tons of food and take a long rest\n");

@@ -16,6 +16,7 @@ public class Room {
     }
 
     //getRoomName() og getDescription() kunne slettet da de ikke anvendes.
+    /*
     public String getRoomName() {
         return roomName;
     }
@@ -23,6 +24,7 @@ public class Room {
     public String getDescription() {
         return description;
     }
+     */
 
     public Room getNorth() {
         return north;
@@ -72,12 +74,12 @@ public class Room {
 
     public Item removeItemFromRoom(String removeItem) {
         for (Item item : itemInRoom) {
-            if (item.getItemName().toLowerCase().contains(removeItem.toLowerCase())) {
+            if (item.getITEM_NAME().toLowerCase().contains(removeItem.toLowerCase())) {
                 itemInRoom.remove(item);
                 return item;
             }
         }
-        System.out.println("I can't take that, because the room has been looted dry");
+        System.out.println("I can't find that in the room");
         return null;
     }
 

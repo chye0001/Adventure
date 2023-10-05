@@ -20,9 +20,9 @@ public class Map {
         room1.setNorth(null);
         room1.setSouth(room4);
         room1.setWest(null);
-        room1.addItemToRoom(new Item("Long sword"));
-        room1.addItemToRoom(new Liquid("Bottle of water", 0));
-        room1.addItemToRoom(new Liquid("Bottle of piss", -3));
+        room1.addItemToRoom(new MeeleWeapon("Long Sword", 10, 1000000));
+        room1.addItemToRoom(new Liquid("Bottle of Water", 0));
+        room1.addItemToRoom(new Liquid("Bottle of Piss", -3));
 
 
         room2.setEast(room3);
@@ -44,7 +44,7 @@ public class Map {
         room4.setNorth(room1);
         room4.setSouth(room7);
         room4.setWest(null);
-        room4.addItemToRoom(new Item("Magic Orb"));
+        room4.addItemToRoom(new RangedWeapon("Magic Orb", 1, 3));
         room4.addItemToRoom(new Food("Apple", +10));
 
 
@@ -52,7 +52,7 @@ public class Map {
         room5.setNorth(null);
         room5.setSouth(room8);
         room5.setWest(null);
-        room5.addItemToRoom(new Item("Long sword"));
+        room5.addItemToRoom(new MeeleWeapon("Dull Long sword", 5, 100));
 
         room6.setEast(null);
         room6.setNorth(room3);
@@ -71,13 +71,14 @@ public class Map {
         room8.setNorth(room5);
         room8.setSouth(null);
         room8.setWest(room7);
-        room8.addItemToRoom(new Item("Long sword"));
+        room8.addItemToRoom(new MeeleWeapon("Too Long of a sword", 15, 10000));
 
         room9.setEast(null);
         room9.setNorth(room6);
         room9.setSouth(null);
         room9.setWest(room8);
         room9.addItemToRoom(new Food ("Rose",-5));
+        room9.addItemToRoom(new RangedWeapon("Blunderbuss", 25, 1));
 
         currentRoom = room1;
         lastTeleport = room1;

@@ -209,7 +209,7 @@ public class Player {
                 equippedWeapon.getDamage(); // Skal udskiftes når der skal tilføjes fjender
                 equippedWeapon.setRemainingUsages(equippedWeapon.getRemainingUsages() - 1);
                 return ReturnMessage.ATTACK;
-            } else if (equippedWeapon.getRemainingUsages() < 0) {
+            } else if (equippedWeapon.getRemainingUsages() == 0) {
                 return ReturnMessage.NO_AMMO;
             }
         }

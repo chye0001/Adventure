@@ -78,7 +78,7 @@ public class Map {
         room9.setSouth(null);
         room9.setWest(room8);
         room9.addItemToRoom(new Food ("Rose",-5));
-        room9.addItemToRoom(new RangedWeapon("Blunderbuss", 25, 1));
+        room9.addItemToRoom(new MeeleWeapon("Blunderbuss", 25, 1));
 
         currentRoom = room1;
         lastTeleport = room1;

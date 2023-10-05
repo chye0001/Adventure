@@ -15,17 +15,6 @@ public class Room {
         this.description = description;
     }
 
-    //getRoomName() og getDescription() kunne slettet da de ikke anvendes.
-    /*
-    public String getRoomName() {
-        return roomName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-     */
-
     public Room getNorth() {
         return north;
     }
@@ -67,10 +56,6 @@ public class Room {
     public void addItemToRoom(Item addItem) {
         itemInRoom.add(addItem);
     }
-
-    /*public void addFoodToRoom(Food addFood) {
-        itemInRoom.add(addFood);
-    }*/
 
     public Item removeItemFromRoom(String removeItem) {
         for (Item item : itemInRoom) {

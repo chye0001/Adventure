@@ -1,4 +1,3 @@
-import java.net.http.WebSocket;
 import java.util.ArrayList;
 
 public class Player {
@@ -9,7 +8,6 @@ public class Player {
     private int health = 50;
     private Weapon equippedWeapon;
     private ReturnMessage checkWeapon;
-    //private Item foodToEat;
 
     public Player() {
     }
@@ -187,24 +185,8 @@ public class Player {
         return currentRoom.showItemsInRoom();
     }
 
-    /*
     public ReturnMessage attack() {
-        if (checkWeapon == ReturnMessage.IS_EQUIPPED) {
-            if (equippedWeapon.equals(ReturnMessage.NO_AMMO)) {
-                return ReturnMessage.NO_AMMO;
-
-            } else {
-                equippedWeapon.attack();
-            return ReturnMessage.MELEE_ATTACK;
-            }
-        } else
-            return ReturnMessage.IS_NOT_EQUIPPED;
-    }
-
-     */
-
-    public ReturnMessage attack() {
-        if (checkWeapon == ReturnMessage.IS_EQUIPPED) {
+        if (checkWeapon == ReturnMessage.WEAPON_EQUIPPED) {
             if (equippedWeapon.getRemainingUsages() > 0) {
                 equippedWeapon.getDamage(); // Skal udskiftes når der skal tilføjes fjender
                 equippedWeapon.setRemainingUsages(equippedWeapon.getRemainingUsages() - 1);
@@ -213,7 +195,7 @@ public class Player {
                 return ReturnMessage.NO_AMMO;
             }
         }
-        return ReturnMessage.IS_NOT_EQUIPPED;
+        return ReturnMessage.WEAPON_NOT_EQUIPPED;
     }
 
     public int getDamageDone() {
@@ -225,12 +207,15 @@ public class Player {
             if (item.getITEM_NAME().toLowerCase().contains(itemName.toLowerCase())) {
                 if (item instanceof Weapon) {
                     equippedWeapon = (Weapon) item;
-                    checkWeapon = ReturnMessage.IS_EQUIPPED;
-                    return ReturnMessage.IS_EQUIPPED;
-                } else
+                    checkWeapon = ReturnMessage.WEAPON_EQUIPPED;
+                    return ReturnMessage.WEAPON_EQUIPPED;
+                } else {
+                    equippedWeapon = null;
                     return ReturnMessage.IS_NOT_A_WEAPON;
+                }
             }
         }
+        equippedWeapon = null;
         return ReturnMessage.CANT_FIND;
     }
 

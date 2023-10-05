@@ -82,4 +82,8 @@ public class AdventureController {
     public ReturnMessage equipWeapon(String weaponToEquip) {
         return player.equipWeapon(weaponToEquip);
     }
+
+    public Weapon getEquippedWeapon() {
+        return player.getEquippedWeapon();
+    }
 }

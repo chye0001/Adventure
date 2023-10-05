@@ -45,7 +45,8 @@ public class UserInterface {
                 case "east", "d" -> controller.moveAround(input);
                 case "west", "a" -> controller.moveAround(input);
                 case "teleport" -> controller.teleport();
-                case "inventory" -> System.out.println("\nIn my bag I see: \n" + controller.showInventory() + "\n");
+                case "inventory" -> System.out.println("\nIn my bag I see: \n" + controller.showInventory() + "\n" +
+                                                       "Equipped weapon: " + controller.getEquippedWeapon() + "\n");
                 case "take" -> controller.takeItemToInventory(secondInput);
                 case "drop" -> controller.dropItemFromInventory(secondInput);
                 case "eat" -> {
@@ -119,8 +120,8 @@ public class UserInterface {
                 }
                 case "equip" -> {
                     ReturnMessage isequipped = controller.equipWeapon(secondInput);
-                    if (isequipped == ReturnMessage.IS_EQUIPPED) {
-                        System.out.println("You have equipped " + secondInput);
+                    if (isequipped == ReturnMessage.WEAPON_EQUIPPED) {
+                        System.out.println("\nYou have equipped " + secondInput);
                     }
                     if (isequipped == ReturnMessage.IS_NOT_A_WEAPON) {
                         System.out.println("You can not equip " + secondInput + " because it's not a weapon");
@@ -135,7 +136,7 @@ public class UserInterface {
                         System.out.println("Damage dealt: " + controller.getDamageDone() + "\n");
                     } else if (checkWeapon == ReturnMessage.NO_AMMO) {
                         System.out.println("You dont have any ammo left, find some!");
-                    } else if (checkWeapon == ReturnMessage.IS_NOT_EQUIPPED)
+                    } else if (checkWeapon == ReturnMessage.WEAPON_NOT_EQUIPPED)
                         System.out.println("You have not equipped a weapon...");
                 }
                 case "help" -> System.out.println("""

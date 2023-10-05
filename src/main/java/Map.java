@@ -81,7 +81,6 @@ public class Map {
 
         currentRoom = room1;
         lastTeleport = room1;
-
     }
 
     public void getMap() {

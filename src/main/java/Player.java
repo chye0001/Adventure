@@ -183,4 +183,56 @@ public class Player {
     public ArrayList<Item> showItemsInRoom() {
         return currentRoom.showItemsInRoom();
     }
+
+    /*
+    public ReturnMessage attack() {
+        if (checkWeapon == ReturnMessage.IS_EQUIPPED) {
+            if (equippedWeapon.equals(ReturnMessage.NO_AMMO)) {
+                return ReturnMessage.NO_AMMO;
+
+            } else {
+                equippedWeapon.attack();
+            return ReturnMessage.MELEE_ATTACK;
+            }
+        } else
+            return ReturnMessage.IS_NOT_EQUIPPED;
+    }
+
+     */
+
+    public ReturnMessage attack() {
+        if (checkWeapon == ReturnMessage.IS_EQUIPPED) {
+            if (equippedWeapon.getRemainingUsages() > 0) {
+                equippedWeapon.getDamage(); // Skal udskiftes når der skal tilføjes fjender
+                equippedWeapon.setRemainingUsages(equippedWeapon.getRemainingUsages() - 1);
+                return ReturnMessage.ATTACK;
+            } else if (equippedWeapon.getRemainingUsages() < 0) {
+                return ReturnMessage.NO_AMMO;
+            }
+        }
+        return ReturnMessage.IS_NOT_EQUIPPED;
+    }
+
+    public int getDamageDone() {
+        return equippedWeapon.getDamage();
+    }
+
+    public ReturnMessage equipWeapon(String itemName) {
+        for (Item item : inventory) {
+            if (item.getITEM_NAME().toLowerCase().contains(itemName.toLowerCase())) {
+                if (item instanceof Weapon) {
+                    equippedWeapon = (Weapon) item;
+                    checkWeapon = ReturnMessage.IS_EQUIPPED;
+                    return ReturnMessage.IS_EQUIPPED;
+                } else
+                    return ReturnMessage.IS_NOT_A_WEAPON;
+            }
+        }
+        return ReturnMessage.CANT_FIND;
+    }
+
+    public Weapon getEquippedWeapon() {
+        return equippedWeapon;
+    }
+
 }

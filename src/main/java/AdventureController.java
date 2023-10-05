@@ -67,8 +67,6 @@ public class AdventureController {
         return player.tryTodrinkLiquid(tryToDrinkLiquid);
     }
 
-    publi
-
     public int getHealth() {
        return player.getHealth();
     }

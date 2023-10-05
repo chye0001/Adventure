@@ -61,7 +61,8 @@ public class UserInterface {
                         }
                         answer = scanner.nextLine();
 
-                    } if (answer.equalsIgnoreCase("yes")) {
+                    }
+                    if (answer.equalsIgnoreCase("yes")) {
                         controller.eat(secondInput);
                         System.out.println("*eating " + secondInput + "*");
                     } else if (returnValueOfFood == ReturnMessage.REALLY_EAT)

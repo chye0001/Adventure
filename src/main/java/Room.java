@@ -30,8 +30,7 @@ public class Room {
     public Room getWest() {
         return west;
     }
-
-
+    
     public void setNorth(Room newRoom) {
         this.north = newRoom;
     }

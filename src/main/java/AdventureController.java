@@ -30,13 +30,18 @@ public class AdventureController {
     public void setLastTeleport() {
         player.setLastTeleport(map.getLastTeleport());
     }
+
     public void teleport() {
         player.teleport();
     }
 
     public void takeItemToInventory(String input) {
         player.takeItem(input);
-        }
+    }
+
+    public Item getPickedUpItem() {
+      return player.getPickedUpItem();
+    }
 
     public void dropItemFromInventory(String input) {
         player.dropItem(input);
@@ -44,7 +49,7 @@ public class AdventureController {
     }
 
     public ArrayList<Item> showItemsInRoom() {
-       return player.showItemsInRoom();
+        return player.showItemsInRoom();
     }
 
     public ArrayList<Item> showInventory() {
@@ -59,7 +64,7 @@ public class AdventureController {
         return player.tryToEatFood(tryToEatFood);
     }
 
-    public ReturnMessage drink(String liquidToDrink){ //Mulighed for cleanup i koden
+    public ReturnMessage drink(String liquidToDrink) { //Mulighed for cleanup i koden
         return player.drinkLiquid(liquidToDrink);     //gør drink() void
     }
 
@@ -68,7 +73,7 @@ public class AdventureController {
     }
 
     public int getHealth() {
-       return player.getHealth();
+        return player.getHealth();
     }
 
     public ReturnMessage attack() {
@@ -79,11 +84,24 @@ public class AdventureController {
         return player.getDamageDone();
     }
 
-    public ReturnMessage equipWeapon(String weaponToEquip) {
-        return player.equipWeapon(weaponToEquip);
+    public ReturnMessage equipWeapon1(String weaponToEquip) {
+        return player.equipWeapon1(weaponToEquip);
     }
 
     public Weapon getEquippedWeapon() {
         return player.getEquippedWeapon();
+    }
+
+
+    public Weapon getEquippedWeapon2() {
+        return player.getEquippedWeapon2();
+    }
+
+    public boolean unequip(String choosenWeaponToUnequip) {
+        return player.unequipWeapon(choosenWeaponToUnequip);
+    }
+
+    public Weapon getUnequippedWeapon() {
+        return player.getUnequippedWeapon();
     }
 }

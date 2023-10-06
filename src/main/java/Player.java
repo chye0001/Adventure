@@ -6,8 +6,14 @@ public class Player {
     private Room lastTeleport;
     private final ArrayList<Item> inventory = new ArrayList<>();
     private int health = 50;
-    private Weapon equippedWeapon;
-    private ReturnMessage checkWeapon;
+    private Item pickedUpItem;
+    private Weapon equippedWeapon1 = null;
+    private Weapon equippedWeapon2 = null;
+    private ReturnMessage checkWeapon1;
+    private ReturnMessage checkWeapon2;
+    private Weapon attemptEquipWeapon1;
+    private Weapon attemptEquipWeapon2;
+    private Weapon unequippedWeapon;
 
     public Player() {
     }
@@ -72,8 +78,13 @@ public class Player {
         Item itemToTake = currentRoom.removeItemFromRoom(takeItem);
         if (itemToTake != null) {
             inventory.add(itemToTake);
+            pickedUpItem = itemToTake;
             System.out.println("\nYou picked up " + itemToTake);
         }
+    }
+
+    public Item getPickedUpItem() {
+        return pickedUpItem;
     }
 
     public void dropItem(String dropItem) {
@@ -116,8 +127,7 @@ public class Player {
         } else {
             for (Item item : inventory) {
                 if (item.getITEM_NAME().toLowerCase().contains(drinkLiquid.toLowerCase())) {
-                    if (item instanceof Liquid) {
-                        Liquid liquid = (Liquid) item;
+                    if (item instanceof Liquid liquid) {
                         health += liquid.getHealthPoints();
                         inventory.remove(liquid);
                         return ReturnMessage.EDIBLE;
@@ -160,8 +170,7 @@ public class Player {
         } else {
             for (Item item : inventory) {
                 if (item.getITEM_NAME().toLowerCase().contains(drinkLiquid.toLowerCase())) {
-                    if (item instanceof Liquid) {
-                        Liquid liquid = (Liquid) item;
+                    if (item instanceof Liquid liquid) {
                         if (liquid.healthPoints < 0) {
                             return ReturnMessage.REALLY_DRINK;
                         } else {
@@ -186,12 +195,12 @@ public class Player {
     }
 
     public ReturnMessage attack() {
-        if (checkWeapon == ReturnMessage.WEAPON_EQUIPPED) {
-            if (equippedWeapon.getRemainingUsages() > 0) {
-                equippedWeapon.getDamage(); // Skal udskiftes når der skal tilføjes fjender
-                equippedWeapon.setRemainingUsages(equippedWeapon.getRemainingUsages() - 1);
+        if (checkWeapon1 == ReturnMessage.WEAPON_EQUIPPED) {
+            if (equippedWeapon1.getRemainingUsages() > 0) {
+                equippedWeapon1.getDamage(); // Skal udskiftes når der skal tilføjes fjender
+                equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
                 return ReturnMessage.ATTACK;
-            } else if (equippedWeapon.getRemainingUsages() == 0) {
+            } else if (equippedWeapon1.getRemainingUsages() == 0) {
                 return ReturnMessage.NO_AMMO;
             }
         }
@@ -199,28 +208,103 @@ public class Player {
     }
 
     public int getDamageDone() {
-        return equippedWeapon.getDamage();
+        return equippedWeapon1.getDamage();
     }
 
-    public ReturnMessage equipWeapon(String itemName) {
+    public ReturnMessage equipWeapon1(String itemName) {
         for (Item item : inventory) {
             if (item.getITEM_NAME().toLowerCase().contains(itemName.toLowerCase())) {
                 if (item instanceof Weapon) {
-                    equippedWeapon = (Weapon) item;
-                    checkWeapon = ReturnMessage.WEAPON_EQUIPPED;
-                    return ReturnMessage.WEAPON_EQUIPPED;
+                    attemptEquipWeapon1 = (Weapon) item; //attemptEquipWeapon1 bliver kun hentet af get-metode, hvis weapon slot 1 ikke er tomt.
+                    if (equippedWeapon1 != null) {
+                        return ReturnMessage.WEAPON_SLOT_UNAVAILABLE;
+                    } else if (equippedWeapon2 != null) {
+                        if (equippedWeapon2.getITEM_NAME().toLowerCase().contains(itemName.toLowerCase())) {
+                            return ReturnMessage.WEAPON_ALREADY_EQUIPPED;
+                        } else {
+                            equippedWeapon1 = (Weapon) item;
+                            checkWeapon1 = ReturnMessage.WEAPON_EQUIPPED;
+                            return ReturnMessage.WEAPON_EQUIPPED;
+                        }
+                    }else {
+                        equippedWeapon1 = (Weapon) item;
+                        checkWeapon1 = ReturnMessage.WEAPON_EQUIPPED;
+                        return ReturnMessage.WEAPON_EQUIPPED;
+                    }
                 } else {
-                    equippedWeapon = null;
                     return ReturnMessage.IS_NOT_A_WEAPON;
                 }
             }
         }
-        equippedWeapon = null;
         return ReturnMessage.CANT_FIND;
     }
 
-    public Weapon getEquippedWeapon() {
-        return equippedWeapon;
+    public Weapon getAttemptEquipWeapon1() {
+        return attemptEquipWeapon1;
     }
 
-}
+    public Weapon getEquippedWeapon1() {
+        return equippedWeapon1;
+    }
+
+    //Udvidelse: dual wielding
+    public ReturnMessage equipWeapon2(String itemName) {
+        for (Item item : inventory) {
+            if (item.getITEM_NAME().toLowerCase().contains(itemName.toLowerCase())) {
+                if (item instanceof Weapon) {
+                    attemptEquipWeapon2 = (Weapon) item; //attemptEquipWeapon1 bliver kun hentet af get-metode, hvis weapon slot 1 ikke er tomt.
+                    if (equippedWeapon2 != null) {
+                        return ReturnMessage.WEAPON_SLOT_UNAVAILABLE;
+                    } else if (equippedWeapon1 != null) {
+                        if (equippedWeapon1.getITEM_NAME().toLowerCase().contains(itemName.toLowerCase())) {
+                            return ReturnMessage.WEAPON_ALREADY_EQUIPPED;
+                        } else {
+                            equippedWeapon2 = (Weapon) item;
+                            checkWeapon2 = ReturnMessage.WEAPON_EQUIPPED;
+                            return ReturnMessage.WEAPON_EQUIPPED;
+                        }
+                    } else {
+                        equippedWeapon2 = (Weapon) item;
+                        checkWeapon2 = ReturnMessage.WEAPON_EQUIPPED;
+                        return ReturnMessage.WEAPON_EQUIPPED;
+                    }
+                } else {
+                    return ReturnMessage.IS_NOT_A_WEAPON;
+                }
+            }
+        }
+        return ReturnMessage.CANT_FIND;
+    }
+
+        public Weapon getAttemptEquipWeapon2 () {
+            return attemptEquipWeapon2;
+        }
+
+        public Weapon getEquippedWeapon2 () {
+            return equippedWeapon2;
+        }
+
+        public boolean unequipWeapon (String chosenWeaponToUnequip){
+            if (checkWeapon1 == ReturnMessage.WEAPON_EQUIPPED) {
+                if (equippedWeapon1.getITEM_NAME().toLowerCase().contains(chosenWeaponToUnequip.toLowerCase())) {
+                    unequippedWeapon = equippedWeapon1;
+                    checkWeapon1 = null;
+                    equippedWeapon1 = null;
+                    return true;
+                }
+            }
+            if (checkWeapon2 == ReturnMessage.WEAPON_EQUIPPED) {
+                if (equippedWeapon2.getITEM_NAME().toLowerCase().contains(chosenWeaponToUnequip.toLowerCase())) {
+                    unequippedWeapon = equippedWeapon2;
+                    checkWeapon2 = null;
+                    equippedWeapon2 = null;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public Weapon getUnequippedWeapon () {
+            return unequippedWeapon;
+        }
+    }

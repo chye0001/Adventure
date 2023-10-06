@@ -46,7 +46,8 @@ public class UserInterface {
                 case "west", "a" -> controller.moveAround(input);
                 case "teleport" -> controller.teleport();
                 case "inventory" -> System.out.println("\nIn my bag I see: \n" + controller.showInventory() + "\n" +
-                                                       "Equipped weapon: " + controller.getEquippedWeapon() + "\n");
+                                                       "Equipped weapon 1: " + controller.getEquippedWeapon1() + "\n" +
+                                                       "Equipped weapon 2: " + controller.getEquippedWeapon2() + "\n");
                 case "take" -> controller.takeItemToInventory(secondInput);
                 case "drop" -> controller.dropItemFromInventory(secondInput);
                 case "eat" -> {
@@ -118,24 +119,59 @@ public class UserInterface {
                         System.out.println("Health: " + controller.getHealth() + " - you are in extremely poor condition, eat tons of food and take a long rest\n");
                     }
                 }
-                case "equip" -> {
-                    ReturnMessage isequipped = controller.equipWeapon(secondInput);
-                    if (isequipped == ReturnMessage.WEAPON_EQUIPPED) {
-                        System.out.println("\nYou have equipped " + secondInput);
+                case "equip1" -> {
+                    ReturnMessage isEquipped = controller.equipWeapon1(secondInput);
+                    if (isEquipped == ReturnMessage.WEAPON_EQUIPPED) {
+                        System.out.println("\nYou have equipped " + controller.getEquippedWeapon1() + "\n");
                     }
-                    if (isequipped == ReturnMessage.IS_NOT_A_WEAPON) {
-                        System.out.println("You can not equip " + secondInput + " because it's not a weapon");
-                    } else if (isequipped == ReturnMessage.CANT_FIND)
-                        System.out.println("No weapon was found with the name" + secondInput + "in the inventory");
-
+                    if (isEquipped == ReturnMessage.IS_NOT_A_WEAPON) {
+                        System.out.println("\nYou can not equip " + controller.getPickedUpItem() + " because it's not a weapon\n");
+                    }
+                    if (isEquipped == ReturnMessage.CANT_FIND) {
+                        System.out.println("\nNo weapon was found with the name " + secondInput + " in the inventory\n");
+                    }
+                    if (isEquipped == ReturnMessage.WEAPON_SLOT_UNAVAILABLE) {
+                        System.out.println("You must unequip your weapon first, before equipping " + controller.getAttemptEquipWeapon1());
+                    }
+                    if (isEquipped == ReturnMessage.WEAPON_ALREADY_EQUIPPED) {
+                        System.out.println("\nYou have already equipped this weapon, in weapon slot 2\n");
+                    }
+                }
+                case "equip2" -> {
+                    //Udvidelse: Dueal wielding & Shields
+                    ReturnMessage isEquipped = controller.equipWeapon2(secondInput);
+                    if (isEquipped == ReturnMessage.WEAPON_EQUIPPED) {
+                        System.out.println("\nYou have equipped " + controller.getEquippedWeapon2() + "\n");
+                    }
+                    if (isEquipped == ReturnMessage.IS_NOT_A_WEAPON) {
+                        System.out.println("\nYou can not equip " + controller.getPickedUpItem() + " because it's not a weapon\n");
+                    }
+                    if (isEquipped == ReturnMessage.CANT_FIND) {
+                        System.out.println("\nNo weapon was found with the name" + secondInput + "in the inventory\n");
+                    }
+                    if (isEquipped == ReturnMessage.WEAPON_SLOT_UNAVAILABLE) {
+                        System.out.println("You must unequip your weapon first, before equipping " + controller.getAttemptEquipWeapon2());
+                    }
+                    if (isEquipped == ReturnMessage.WEAPON_ALREADY_EQUIPPED) {
+                        System.out.println("\nYou have already equipped this weapon, in weapon slot 1\n");
+                    }
+                }
+                case "unequip" -> {
+                    //Udvidelse: Dueal wielding & Shields
+                    boolean checkEquip = controller.unequip(secondInput);
+                    if (checkEquip) {
+                        controller.unequip(secondInput);
+                        System.out.println("\nYou have unequipped " + controller.getUnequippedWeapon() + "\n");
+                    } else
+                        System.out.println("\nYou dont have anything to unequip...\n");
                 }
                 case "attack", "use" -> {
                     ReturnMessage checkWeapon = controller.attack();
                     if (checkWeapon == ReturnMessage.ATTACK) {
-                        System.out.println("I use my " + secondInput);
+                        System.out.println("I use my " + controller.getEquippedWeapon1());
                         System.out.println("Damage dealt: " + controller.getDamageDone() + "\n");
                     } else if (checkWeapon == ReturnMessage.NO_AMMO) {
-                        System.out.println("You dont have any ammo left, find some!");
+                        System.out.println("You dont have any ammo left, find some!\n");
                     } else if (checkWeapon == ReturnMessage.WEAPON_NOT_EQUIPPED)
                         System.out.println("You have not equipped a weapon...");
                 }

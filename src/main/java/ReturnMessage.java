@@ -10,4 +10,7 @@ public enum ReturnMessage {
     NO_AMMO,
     IS_NOT_A_WEAPON,
     ATTACK,
+    SHIELD,
+    WEAPON_SLOT_UNAVAILABLE,
+    WEAPON_ALREADY_EQUIPPED
 }

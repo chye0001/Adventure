@@ -175,6 +175,7 @@ public class UserInterface {
                     } else if (checkWeapon == ReturnMessage.WEAPON_NOT_EQUIPPED)
                         System.out.println("You have not equipped a weapon...");
                 }
+
                 case "help" -> System.out.println("""
                         If you want to move North, write: "North"
                         If you want to move East, then write "East"

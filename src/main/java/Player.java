@@ -207,6 +207,19 @@ public class Player {
         return ReturnMessage.WEAPON_NOT_EQUIPPED;
     }
 
+    public ReturnMessage shield() {
+        if (checkWeapon1 == ReturnMessage.WEAPON_EQUIPPED) {
+            if (equippedWeapon1.getRemainingUsages() > 0) {
+                equippedWeapon1.getDamage(); // Skal udskiftes når der skal tilføjes fjender
+                equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
+                return ReturnMessage.ATTACK;
+            } else if (equippedWeapon1.getRemainingUsages() == 0) {
+                return ReturnMessage.NO_AMMO;
+            }
+        }
+        return ReturnMessage.WEAPON_NOT_EQUIPPED;
+    }
+
     public int getDamageDone() {
         return equippedWeapon1.getDamage();
     }

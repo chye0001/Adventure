@@ -21,6 +21,7 @@ public class Map {
         room1.setSouth(room4);
         room1.setWest(null);
         room1.addItemToRoom(new MeeleWeapon("Long Sword", 10, 1000000));
+        room1.addItemToRoom(new MeeleWeapon("Dagger", 7, 1000000));
         room1.addItemToRoom(new Liquid("Bottle of Water", 0));
         room1.addItemToRoom(new Liquid("Bottle of Piss", -3));
 

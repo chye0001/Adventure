@@ -25,6 +25,7 @@ public class UserInterface {
             System.out.println(controller.getCurrentRoom());
             System.out.println("In this room I see the following items:\n" + controller.showItemsInRoom());
 
+
             System.out.println("\nWhat do you wish to do?");
             input = scanner.nextLine();
 
@@ -167,11 +168,30 @@ public class UserInterface {
                 }
                 case "attack", "use" -> {
                     ReturnMessage checkWeapon = controller.attack();
-                    if (checkWeapon == ReturnMessage.ATTACK) {
+                    if (checkWeapon == ReturnMessage.DUAL_WIELDING_ATTACK) {   //Udvidelse: dual wielding
+                        System.out.println("Dual wielding...!\nDamage dealt: " + controller.getDualWieldingDamage());
+
+                    } else if (checkWeapon == ReturnMessage.WEAPON1_NO_AMMO_USE_WEAPON_2) {  //Udvidelse: dual wielding
+                        System.out.println(controller.getEquippedWeapon1() + " has no more ammo..\n" +
+                                           "Therefore I use my " + controller.getAttemptEquipWeapon2() + "\n" +
+                                           "Damage dealt: " + controller.getDamageDone());
+
+                    } else if (checkWeapon == ReturnMessage.WEAPON2_NO_AMMO_USE_WEAPON_1) {  //Udvidelse: dual wielding
+                        System.out.println(controller.getEquippedWeapon2() + " has no more ammo..\n" +
+                                "Therefore I use my " + controller.getAttemptEquipWeapon1() + "\n" +
+                                "Damage dealt: " + controller.getDamageDone());
+
+                    } else if (checkWeapon == ReturnMessage.ATTACK1) {
                         System.out.println("I use my " + controller.getEquippedWeapon1());
                         System.out.println("Damage dealt: " + controller.getDamageDone() + "\n");
+
+                    } else if (checkWeapon == ReturnMessage.ATTACK2) {
+                        System.out.println("I use my " + controller.getEquippedWeapon2());
+                        System.out.println("Damage dealt: " + controller.getDamageDone() + "\n");
+
                     } else if (checkWeapon == ReturnMessage.NO_AMMO) {
-                        System.out.println("You dont have any ammo left, find some!\n");
+                        System.out.println("You dont have any ammo left...\n");
+
                     } else if (checkWeapon == ReturnMessage.WEAPON_NOT_EQUIPPED)
                         System.out.println("You have not equipped a weapon...");
                 }

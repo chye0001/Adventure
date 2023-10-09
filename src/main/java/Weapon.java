@@ -1,10 +1,10 @@
 public abstract class Weapon extends Item {
 
     protected int damage;
-    int remainingUsages;
+    protected int remainingUsages;
 
 
-    public Weapon(String itemName, int damage, int remainingUsages) {
+    public Weapon(String itemName, int damage, int remainingUsages) { //Potentiel bug, itemName hedder ITEM_NAME i Item klassen.
         super(itemName);
         this.damage = damage;
         this.remainingUsages = remainingUsages;

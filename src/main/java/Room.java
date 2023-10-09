@@ -10,6 +10,7 @@ public class Room {
     private Room west;
     private final ArrayList<Item> itemInRoom = new ArrayList<>(5);
 
+
     public Room(String roomName, String description) {
         this.roomName = roomName;
         this.description = description;
@@ -30,7 +31,7 @@ public class Room {
     public Room getWest() {
         return west;
     }
-    
+
     public void setNorth(Room newRoom) {
         this.north = newRoom;
     }
@@ -71,9 +72,10 @@ public class Room {
         return itemInRoom;
     }
 
+
+
     public String toString() {
         return roomName + "\n" +
                 "Room description: " + description + "\n";
     }
-
 }

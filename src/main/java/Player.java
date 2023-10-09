@@ -14,6 +14,8 @@ public class Player {
     private Weapon attemptEquipWeapon1;
     private Weapon attemptEquipWeapon2;
     private Weapon unequippedWeapon;
+    private int dualWieldingDamage; //Udvidelse: dual wielding
+    private int damage;
 
     public Player() {
     }
@@ -194,34 +196,93 @@ public class Player {
         return currentRoom.showItemsInRoom();
     }
 
+    /*
     public ReturnMessage attack() {
         if (checkWeapon1 == ReturnMessage.WEAPON_EQUIPPED) {
             if (equippedWeapon1.getRemainingUsages() > 0) {
                 equippedWeapon1.getDamage(); // Skal udskiftes når der skal tilføjes fjender
                 equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
-                return ReturnMessage.ATTACK;
+                return ReturnMessage.ATTACK1;
             } else if (equippedWeapon1.getRemainingUsages() == 0) {
                 return ReturnMessage.NO_AMMO;
             }
         }
         return ReturnMessage.WEAPON_NOT_EQUIPPED;
     }
+     */
 
+
+    public ReturnMessage attack() {
+        if (checkWeapon1 == ReturnMessage.WEAPON_EQUIPPED && checkWeapon2 == ReturnMessage.WEAPON_EQUIPPED) { //If both weapons are equiped
+            if (equippedWeapon1.getRemainingUsages() > 0 && equippedWeapon2.getRemainingUsages() > 0) { //If they both have ammo
+                equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
+                equippedWeapon2.setRemainingUsages(equippedWeapon2.getRemainingUsages() - 1);
+                dualWieldingDamage = equippedWeapon1.getDamage() + equippedWeapon2.getDamage();
+                return ReturnMessage.DUAL_WIELDING_ATTACK;
+
+            } else if (equippedWeapon1.getRemainingUsages() == 0 && equippedWeapon2.getRemainingUsages() == 0) { //If neither weapon has ammo
+                return ReturnMessage.NO_AMMO;
+
+            } else if (equippedWeapon1.getRemainingUsages() == 0 && equippedWeapon2.getRemainingUsages() > 0) {
+                equippedWeapon2.setRemainingUsages(equippedWeapon2.getRemainingUsages() - 1);
+                damage = equippedWeapon2.getDamage();
+                return ReturnMessage.WEAPON1_NO_AMMO_USE_WEAPON_2;
+
+            } else if (equippedWeapon2.getRemainingUsages() == 0 && equippedWeapon1.getRemainingUsages() > 0) {
+                equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
+                damage = equippedWeapon1.getDamage();
+                return ReturnMessage.WEAPON2_NO_AMMO_USE_WEAPON_1;
+
+            }
+        }
+
+        if (checkWeapon1 == ReturnMessage.WEAPON_EQUIPPED) {
+            if (equippedWeapon1.getRemainingUsages() > 0) {
+                equippedWeapon1.getDamage(); // Skal udskiftes når der skal tilføjes fjender
+                equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
+                return ReturnMessage.ATTACK1;
+            } else if (equippedWeapon1.getRemainingUsages() == 0) {
+                return ReturnMessage.NO_AMMO;
+            }
+        }
+
+        if (checkWeapon2 == ReturnMessage.WEAPON_EQUIPPED) {
+            if (equippedWeapon2.getRemainingUsages() > 0) {
+                equippedWeapon2.getDamage(); // Skal udskiftes når der skal tilføjes fjender
+                equippedWeapon2.setRemainingUsages(equippedWeapon2.getRemainingUsages() - 1);
+                return ReturnMessage.ATTACK2;
+            } else if (equippedWeapon2.getRemainingUsages() == 0) {
+                return ReturnMessage.NO_AMMO;
+            }
+        }
+
+        return ReturnMessage.WEAPON_NOT_EQUIPPED;
+    }
+
+    public ReturnMessage attack(String enemyToAttack) {
+        return ReturnMessage.ATTACK1;
+    }
+
+    public int getDualWieldingDamage() {
+        return dualWieldingDamage;
+    }
+
+    public int getDamageDone() {
+        return damage;
+    }
+
+    //udvidelse: Shields
     public ReturnMessage shield() {
         if (checkWeapon1 == ReturnMessage.WEAPON_EQUIPPED) {
             if (equippedWeapon1.getRemainingUsages() > 0) {
                 equippedWeapon1.getDamage(); // Skal udskiftes når der skal tilføjes fjender
                 equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
-                return ReturnMessage.ATTACK;
+                return ReturnMessage.ATTACK1;
             } else if (equippedWeapon1.getRemainingUsages() == 0) {
                 return ReturnMessage.NO_AMMO;
             }
         }
         return ReturnMessage.WEAPON_NOT_EQUIPPED;
-    }
-
-    public int getDamageDone() {
-        return equippedWeapon1.getDamage();
     }
 
     public ReturnMessage equipWeapon1(String itemName) {
@@ -239,7 +300,7 @@ public class Player {
                             checkWeapon1 = ReturnMessage.WEAPON_EQUIPPED;
                             return ReturnMessage.WEAPON_EQUIPPED;
                         }
-                    }else {
+                    } else {
                         equippedWeapon1 = (Weapon) item;
                         checkWeapon1 = ReturnMessage.WEAPON_EQUIPPED;
                         return ReturnMessage.WEAPON_EQUIPPED;
@@ -289,35 +350,37 @@ public class Player {
         return ReturnMessage.CANT_FIND;
     }
 
-        public Weapon getAttemptEquipWeapon2 () {
-            return attemptEquipWeapon2;
-        }
-
-        public Weapon getEquippedWeapon2 () {
-            return equippedWeapon2;
-        }
-
-        public boolean unequipWeapon (String chosenWeaponToUnequip){
-            if (checkWeapon1 == ReturnMessage.WEAPON_EQUIPPED) {
-                if (equippedWeapon1.getITEM_NAME().toLowerCase().contains(chosenWeaponToUnequip.toLowerCase())) {
-                    unequippedWeapon = equippedWeapon1;
-                    checkWeapon1 = null;
-                    equippedWeapon1 = null;
-                    return true;
-                }
-            }
-            if (checkWeapon2 == ReturnMessage.WEAPON_EQUIPPED) {
-                if (equippedWeapon2.getITEM_NAME().toLowerCase().contains(chosenWeaponToUnequip.toLowerCase())) {
-                    unequippedWeapon = equippedWeapon2;
-                    checkWeapon2 = null;
-                    equippedWeapon2 = null;
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public Weapon getUnequippedWeapon () {
-            return unequippedWeapon;
-        }
+    public Weapon getAttemptEquipWeapon2() {
+        return attemptEquipWeapon2;
     }
+
+    public Weapon getEquippedWeapon2() {
+        return equippedWeapon2;
+    }
+
+    public boolean unequipWeapon(String chosenWeaponToUnequip) {
+        if (checkWeapon1 == ReturnMessage.WEAPON_EQUIPPED) {
+            if (equippedWeapon1.getITEM_NAME().toLowerCase().contains(chosenWeaponToUnequip.toLowerCase())) {
+                unequippedWeapon = equippedWeapon1;
+                checkWeapon1 = null;
+                equippedWeapon1 = null;
+                return true;
+            }
+        }
+        if (checkWeapon2 == ReturnMessage.WEAPON_EQUIPPED) {
+            if (equippedWeapon2.getITEM_NAME().toLowerCase().contains(chosenWeaponToUnequip.toLowerCase())) {
+                unequippedWeapon = equippedWeapon2;
+                checkWeapon2 = null;
+                equippedWeapon2 = null;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Weapon getUnequippedWeapon() {
+        return unequippedWeapon;
+    }
+
+
+}

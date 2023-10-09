@@ -80,6 +80,10 @@ public class AdventureController {
         return player.attack();
     }
 
+    public int getDualWieldingDamage() {
+       return player.getDualWieldingDamage();
+    }
+
     public int getDamageDone() {
         return player.getDamageDone();
     }
@@ -116,4 +120,6 @@ public class AdventureController {
     public Weapon getUnequippedWeapon() {
         return player.getUnequippedWeapon();
     }
+
+
 }

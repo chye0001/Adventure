@@ -263,6 +263,7 @@ public class Player {
         return ReturnMessage.ATTACK1;
     }
 
+
     public int getDualWieldingDamage() {
         return dualWieldingDamage;
     }

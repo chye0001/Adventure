@@ -5,7 +5,7 @@ public class Player {
     private Room currentRoom;
     private Room lastTeleport;
     private final ArrayList<Item> inventory = new ArrayList<>();
-    private int health = 50;
+    private int playerHealth = 50;
     private Item pickedUpItem;
     private Weapon equippedWeapon1 = null;
     private Weapon equippedWeapon2 = null;
@@ -15,7 +15,12 @@ public class Player {
     private Weapon attemptEquipWeapon2;
     private Weapon unequippedWeapon;
     private int dualWieldingDamage; //Udvidelse: dual wielding
-    private int damage;
+    private int weaponDamage;
+    private Enemy enemyKilled;
+    private int enemyHealth;
+    private Enemy enemyWeapon;
+    private Enemy enemy;
+    private int play = 0;
 
     public Player() {
     }
@@ -68,10 +73,6 @@ public class Player {
         this.currentRoom = setRoom;
     }
 
-    public int getHealth() {
-        return health;
-    }
-
     public void setLastTeleport(Room setLastTeleport) {
         this.lastTeleport = setLastTeleport;
     }
@@ -111,7 +112,7 @@ public class Player {
             for (Item item : inventory) {
                 if (item.getITEM_NAME().toLowerCase().contains(eatFood.toLowerCase())) {
                     if (item instanceof Food food) {
-                        health += food.getHealthPoints();
+                        playerHealth += food.getHealthPoints();
                         inventory.remove(food);
                         return ReturnMessage.EDIBLE;
                     } else
@@ -130,7 +131,7 @@ public class Player {
             for (Item item : inventory) {
                 if (item.getITEM_NAME().toLowerCase().contains(drinkLiquid.toLowerCase())) {
                     if (item instanceof Liquid liquid) {
-                        health += liquid.getHealthPoints();
+                        playerHealth += liquid.getHealthPoints();
                         inventory.remove(liquid);
                         return ReturnMessage.EDIBLE;
                     } else
@@ -152,7 +153,7 @@ public class Player {
                         if (food.getHealthPoints() < 0) {
                             return ReturnMessage.REALLY_EAT;
                         } else {
-                            health += food.getHealthPoints();
+                            playerHealth += food.getHealthPoints();
                             inventory.remove(food);
                             return ReturnMessage.EDIBLE;
                         }
@@ -176,7 +177,7 @@ public class Player {
                         if (liquid.healthPoints < 0) {
                             return ReturnMessage.REALLY_DRINK;
                         } else {
-                            health += liquid.getHealthPoints();
+                            playerHealth += liquid.getHealthPoints();
                             inventory.remove(liquid);
                             return ReturnMessage.EDIBLE;
                         }
@@ -197,6 +198,7 @@ public class Player {
     }
 
     /*
+    //Basis udgave af attak-metoden.
     public ReturnMessage attack() {
         if (checkWeapon1 == ReturnMessage.WEAPON_EQUIPPED) {
             if (equippedWeapon1.getRemainingUsages() > 0) {
@@ -212,7 +214,7 @@ public class Player {
      */
 
 
-    public ReturnMessage attack() {
+    public ReturnMessage attack() { //Denne attack-metode angriber den tomme luft
         if (checkWeapon1 == ReturnMessage.WEAPON_EQUIPPED && checkWeapon2 == ReturnMessage.WEAPON_EQUIPPED) { //If both weapons are equiped
             if (equippedWeapon1.getRemainingUsages() > 0 && equippedWeapon2.getRemainingUsages() > 0) { //If they both have ammo
                 equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
@@ -225,12 +227,12 @@ public class Player {
 
             } else if (equippedWeapon1.getRemainingUsages() == 0 && equippedWeapon2.getRemainingUsages() > 0) {
                 equippedWeapon2.setRemainingUsages(equippedWeapon2.getRemainingUsages() - 1);
-                damage = equippedWeapon2.getDamage();
+                weaponDamage = equippedWeapon2.getDamage();
                 return ReturnMessage.WEAPON1_NO_AMMO_USE_WEAPON_2;
 
             } else if (equippedWeapon2.getRemainingUsages() == 0 && equippedWeapon1.getRemainingUsages() > 0) {
                 equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
-                damage = equippedWeapon1.getDamage();
+                weaponDamage = equippedWeapon1.getDamage();
                 return ReturnMessage.WEAPON2_NO_AMMO_USE_WEAPON_1;
 
             }
@@ -238,7 +240,7 @@ public class Player {
 
         if (checkWeapon1 == ReturnMessage.WEAPON_EQUIPPED) {
             if (equippedWeapon1.getRemainingUsages() > 0) {
-                equippedWeapon1.getDamage(); // Skal udskiftes når der skal tilføjes fjender
+                weaponDamage = equippedWeapon1.getDamage();
                 equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
                 return ReturnMessage.ATTACK1;
             } else if (equippedWeapon1.getRemainingUsages() == 0) {
@@ -248,7 +250,7 @@ public class Player {
 
         if (checkWeapon2 == ReturnMessage.WEAPON_EQUIPPED) {
             if (equippedWeapon2.getRemainingUsages() > 0) {
-                equippedWeapon2.getDamage(); // Skal udskiftes når der skal tilføjes fjender
+                weaponDamage = equippedWeapon2.getDamage();
                 equippedWeapon2.setRemainingUsages(equippedWeapon2.getRemainingUsages() - 1);
                 return ReturnMessage.ATTACK2;
             } else if (equippedWeapon2.getRemainingUsages() == 0) {
@@ -259,8 +261,187 @@ public class Player {
         return ReturnMessage.WEAPON_NOT_EQUIPPED;
     }
 
+    //TODO ATTACK_SEQUNCE
+    //Hjælpe metode for variation 1 med dual wielding attack.
+    public ReturnMessage attackSequenceDualWielding(String enemyToAttack) {
+        for (Enemy enemy : currentRoom.getListOfEnemies()) {
+            if (enemy.getEnemyName().toLowerCase().contains(enemyToAttack.toLowerCase())) {
+                enemy.setEnemyHealth(enemy.getEnemyHealth() - dualWieldingDamage);
+                playerHealth =- enemy.getEnemyWeapon().getDamage();
+            }
+
+            if (enemy.hasEnemyDied() == ReturnMessage.ENEMY_DEAD && playerHealth <= 0) {
+                return ReturnMessage.PLAYER_DEAD;
+
+            } else if (enemy.hasEnemyDied() == ReturnMessage.ENEMY_DEAD && playerHealth > 0) {
+                enemyKilled = enemy;
+                return ReturnMessage.ENEMY_KILLED;
+
+            } else if (playerHealth <= 0 && enemy.hasEnemyDied() == ReturnMessage.ENEMY_ALIVE) {
+                return ReturnMessage.PLAYER_DEAD;
+
+            } else
+                return ReturnMessage.BATTLE_ONGOING_DUAL_WIELDING_ATTACK;
+
+        }
+        return ReturnMessage.CANT_FIND;
+    }
+
+    //Hjælpe metode for variation 2 med dual wielding attack hvor weapon2 ingen ammo har.
+    public ReturnMessage attackSequenceUseWeapon1Weapon2NoAmmo(String enemyToAttack) {
+        for (Enemy enemy : currentRoom.getListOfEnemies()) {
+            if (enemy.getEnemyName().toLowerCase().contains(enemyToAttack.toLowerCase())) {
+                enemy.setEnemyHealth(enemy.getEnemyHealth() - weaponDamage);
+                playerHealth =- enemy.getEnemyWeapon().getDamage();
+            }
+
+            if (enemy.hasEnemyDied() == ReturnMessage.ENEMY_DEAD && playerHealth <= 0) {
+                return ReturnMessage.PLAYER_DEAD;
+
+            } else if (enemy.hasEnemyDied() == ReturnMessage.ENEMY_DEAD && playerHealth > 0) {
+                enemyKilled = enemy;
+                return ReturnMessage.ENEMY_KILLED;
+
+            } else if (playerHealth <= 0 && enemy.hasEnemyDied() == ReturnMessage.ENEMY_ALIVE) {
+                return ReturnMessage.PLAYER_DEAD;
+
+            } else
+                return ReturnMessage.BATTLE_ONGOING_USE_WEAPON1_WEAPON2_NO_AMMO;
+
+        }
+        return ReturnMessage.CANT_FIND;
+    }
+
+    //Hjælpe metode for variation 3 med dual wielding attack hvis weapon1 ingen ammo har.
+    public ReturnMessage attackSequenceUseWeapon2Weapon1NoAmmo(String enemyToAttack) {
+        for (Enemy enemy : currentRoom.getListOfEnemies()) {
+            if (enemy.getEnemyName().toLowerCase().contains(enemyToAttack.toLowerCase())) {
+                enemy.setEnemyHealth(enemy.getEnemyHealth() - weaponDamage);
+                playerHealth =- enemy.getEnemyWeapon().getDamage();
+            }
+
+            if (enemy.hasEnemyDied() == ReturnMessage.ENEMY_DEAD && playerHealth <= 0) {
+                return ReturnMessage.PLAYER_DEAD;
+
+            } else if (enemy.hasEnemyDied() == ReturnMessage.ENEMY_DEAD && playerHealth > 0) {
+                enemyKilled = enemy;
+                return ReturnMessage.ENEMY_KILLED;
+
+            } else if (playerHealth <= 0 && enemy.hasEnemyDied() == ReturnMessage.ENEMY_ALIVE) {
+                return ReturnMessage.PLAYER_DEAD;
+
+            } else
+                return ReturnMessage.BATTLE_ONGOING_USE_WEAPON2_WEAPON1_NO_AMMO;
+
+        }
+        return ReturnMessage.CANT_FIND;
+    }
+
+    //Hjælpe metode for variation 4 hvor weapon1 er equipped og weapon2 ikke er equipped.
+    public ReturnMessage attackSequenceUseWeapon1Weapon2NotEquipped(String enemyToAttack) {
+        for (Enemy enemy : currentRoom.getListOfEnemies()) {
+            if (enemy.getEnemyName().toLowerCase().contains(enemyToAttack.toLowerCase())) {
+                enemy.setEnemyHealth(enemy.getEnemyHealth() - weaponDamage);
+                enemyHealth = enemy.enemyHealth;
+                playerHealth -= enemy.getEnemyWeapon().getDamage();
+            }
+
+            if (enemy.hasEnemyDied() == ReturnMessage.ENEMY_DEAD && playerHealth <= 0) {
+                return ReturnMessage.PLAYER_DEAD;
+
+            } else if (enemy.hasEnemyDied() == ReturnMessage.ENEMY_DEAD && playerHealth > 0) {
+                enemyKilled = enemy;
+                return ReturnMessage.ENEMY_KILLED;
+
+            } else if (playerHealth <= 0 && enemy.hasEnemyDied() == ReturnMessage.ENEMY_ALIVE) {
+                return ReturnMessage.PLAYER_DEAD;
+
+            } else
+                return ReturnMessage.BATTLE_ONGOING_USE_WEAPON1_WEAPON2_NOT_EQUIPPED;
+
+        }
+        return ReturnMessage.CANT_FIND;
+    }
+
+    //Hjælpe metode for variation 5 hvor weapon2 er equipped og weapon1 ikke er equipped.
+    public ReturnMessage attackSequenceUseWeapon2Weapon1NotEquipped(String enemyToAttack) {
+        for (Enemy enemy : currentRoom.getListOfEnemies()) {
+            if (enemy.getEnemyName().toLowerCase().contains(enemyToAttack.toLowerCase())) {
+                enemy.setEnemyHealth(enemy.getEnemyHealth() - weaponDamage);
+                enemyHealth = enemy.enemyHealth;
+                playerHealth =- enemy.getEnemyWeapon().getDamage();
+            }
+
+            if (enemy.hasEnemyDied() == ReturnMessage.ENEMY_DEAD && playerHealth <= 0) {
+                return ReturnMessage.PLAYER_DEAD;
+
+            } else if (enemy.hasEnemyDied() == ReturnMessage.ENEMY_DEAD && playerHealth > 0) {
+                enemyKilled = enemy;
+                return ReturnMessage.ENEMY_KILLED;
+
+            } else if (playerHealth <= 0 && enemy.hasEnemyDied() == ReturnMessage.ENEMY_ALIVE) {
+                return ReturnMessage.PLAYER_DEAD;
+
+            } else
+                return ReturnMessage.BATTLE_ONGOING_USE_WEAPON2_WEAPON1_NOT_EQUIPPED;
+
+        }
+        return ReturnMessage.CANT_FIND;
+    }
+
+    public Enemy getEnemyKilled() {
+        return enemyKilled;
+    }
+
+    //Denne attack-metode angriber en faktisk enemy.
     public ReturnMessage attack(String enemyToAttack) {
-        return ReturnMessage.ATTACK1;
+        if (checkWeapon1 == ReturnMessage.WEAPON_EQUIPPED && checkWeapon2 == ReturnMessage.WEAPON_EQUIPPED) { //If both weapons are equiped
+            if (equippedWeapon1.getRemainingUsages() > 0 && equippedWeapon2.getRemainingUsages() > 0) { //If they both have ammo
+                equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
+                equippedWeapon2.setRemainingUsages(equippedWeapon2.getRemainingUsages() - 1);
+                dualWieldingDamage = equippedWeapon1.getDamage() + equippedWeapon2.getDamage();
+                return attackSequenceDualWielding(enemyToAttack);
+
+            } else if (equippedWeapon1.getRemainingUsages() == 0 && equippedWeapon2.getRemainingUsages() == 0) { //If neither weapon has ammo
+                return ReturnMessage.NO_AMMO;
+
+            } else if (equippedWeapon1.getRemainingUsages() == 0 && equippedWeapon2.getRemainingUsages() > 0) {
+                equippedWeapon2.setRemainingUsages(equippedWeapon2.getRemainingUsages() - 1);
+                weaponDamage = equippedWeapon2.getDamage();
+                return attackSequenceUseWeapon1Weapon2NoAmmo(enemyToAttack);
+
+
+            } else if (equippedWeapon2.getRemainingUsages() == 0 && equippedWeapon1.getRemainingUsages() > 0) {
+                equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
+                weaponDamage = equippedWeapon1.getDamage();
+                return attackSequenceUseWeapon2Weapon1NoAmmo(enemyToAttack);
+
+            }
+        }
+
+        if (checkWeapon1 == ReturnMessage.WEAPON_EQUIPPED) {
+            if (equippedWeapon1.getRemainingUsages() > 0) {
+                weaponDamage = equippedWeapon1.getDamage();
+                equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
+                return attackSequenceUseWeapon1Weapon2NotEquipped(enemyToAttack);
+
+            } else if (equippedWeapon1.getRemainingUsages() == 0) {
+                return ReturnMessage.NO_AMMO;
+            }
+        }
+
+        if (checkWeapon2 == ReturnMessage.WEAPON_EQUIPPED) {
+            if (equippedWeapon2.getRemainingUsages() > 0) {
+                weaponDamage = equippedWeapon2.getDamage();
+                equippedWeapon2.setRemainingUsages(equippedWeapon2.getRemainingUsages() - 1);
+                return attackSequenceUseWeapon2Weapon1NotEquipped(enemyToAttack);
+
+            } else if (equippedWeapon2.getRemainingUsages() == 0) {
+                return ReturnMessage.NO_AMMO;
+            }
+        }
+
+        return ReturnMessage.WEAPON_NOT_EQUIPPED;
     }
 
     public int getDualWieldingDamage() {
@@ -268,7 +449,15 @@ public class Player {
     }
 
     public int getDamageDone() {
-        return damage;
+        return weaponDamage;
+    }
+
+    public int getEnemyHealth() {
+        return enemyHealth;
+    }
+
+    public int getPlayerHealth() {
+        return playerHealth;
     }
 
     //udvidelse: Shields
@@ -382,5 +571,15 @@ public class Player {
         return unequippedWeapon;
     }
 
+    public ArrayList<Enemy> getListOfEnemies() {
+        return currentRoom.getListOfEnemies();
+    }
+
+    public void resetInventoryOnPlayerDeath() {
+        //Removes all items
+        for (Item item : inventory) {
+            inventory.remove(item);
+        }
+    }
 
 }

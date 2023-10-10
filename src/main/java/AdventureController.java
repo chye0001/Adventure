@@ -72,12 +72,12 @@ public class AdventureController {
         return player.tryTodrinkLiquid(tryToDrinkLiquid);
     }
 
-    public int getHealth() {
-        return player.getHealth();
+    public int getPlayerHealth() {
+        return player.getPlayerHealth();
     }
 
-    public ReturnMessage attack() {
-        return player.attack();
+    public ReturnMessage attack(String enemyToAttack) {
+        return player.attack(enemyToAttack);
     }
 
     public int getDualWieldingDamage() {
@@ -121,5 +121,16 @@ public class AdventureController {
         return player.getUnequippedWeapon();
     }
 
+    public ArrayList<Enemy> getListOfEnemies() {
+        return player.getListOfEnemies();
+    }
+
+    public int getEnemyHealth() {
+        return player.getEnemyHealth();
+    }
+
+    public Enemy getEnemyKilled() {
+        return player.getEnemyKilled();
+    }
 
 }

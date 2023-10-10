@@ -8,6 +8,7 @@ public class AdventureController {
     Player player = new Player();
 
 
+
     public AdventureController() {
     }
 
@@ -55,6 +56,7 @@ public class AdventureController {
     public ArrayList<Item> showInventory() {
         return player.showInventory();
     }
+
 
     public ReturnMessage eat(String foodToEat) { // Potentiel cleanup i koden
         return player.eatFood(foodToEat);        // gør eat() metoden void

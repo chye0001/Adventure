@@ -105,6 +105,8 @@ public class Player {
         }
     }
 
+
+
     public ReturnMessage eatFood(String eatFood) {
         if (inventory.isEmpty()) {
             return ReturnMessage.CANT_FIND;

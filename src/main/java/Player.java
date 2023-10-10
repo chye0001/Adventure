@@ -197,6 +197,7 @@ public class Player {
         return currentRoom.showItemsInRoom();
     }
 
+
     /*
     //Basis udgave af attak-metoden.
     public ReturnMessage attack() {
@@ -567,6 +568,7 @@ public class Player {
         }
         return false;
     }
+
 
     public Weapon getUnequippedWeapon() {
         return unequippedWeapon;

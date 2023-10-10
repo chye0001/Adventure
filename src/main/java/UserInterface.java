@@ -47,8 +47,8 @@ public class UserInterface {
                 case "west", "a" -> controller.moveAround(input);
                 case "teleport" -> controller.teleport();
                 case "inventory" -> System.out.println("\nIn my bag I see: \n" + controller.showInventory() + "\n" +
-                                                       "Equipped weapon 1: " + controller.getEquippedWeapon1() + "\n" +
-                                                       "Equipped weapon 2: " + controller.getEquippedWeapon2() + "\n");
+                        "Equipped weapon 1: " + controller.getEquippedWeapon1() + "\n" +
+                        "Equipped weapon 2: " + controller.getEquippedWeapon2() + "\n");
                 case "take" -> controller.takeItemToInventory(secondInput);
                 case "drop" -> controller.dropItemFromInventory(secondInput);
                 case "eat" -> {
@@ -175,8 +175,8 @@ public class UserInterface {
 
                     } else if (checkStatusOfAttack == ReturnMessage.WEAPON1_NO_AMMO_USE_WEAPON_2) {  //Udvidelse: dual wielding
                         System.out.println(controller.getEquippedWeapon1() + " has no more ammo..\n" +
-                                           "Therefore I use my " + controller.getAttemptEquipWeapon2() + "\n" +
-                                           "Damage dealt: " + controller.getDamageDone());
+                                "Therefore I use my " + controller.getAttemptEquipWeapon2() + "\n" +
+                                "Damage dealt: " + controller.getDamageDone());
 
                     } else if (checkStatusOfAttack == ReturnMessage.WEAPON2_NO_AMMO_USE_WEAPON_1) {  //Udvidelse: dual wielding
                         System.out.println(controller.getEquippedWeapon2() + " has no more ammo..\n" +

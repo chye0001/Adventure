@@ -133,4 +133,7 @@ public class AdventureController {
         return player.getEnemyKilled();
     }
 
+    public void resetInventoryOnPlayerDeath() {
+        player.resetInventoryOnPlayerDeath();
+    }
 }

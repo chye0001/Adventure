@@ -444,6 +444,7 @@ public class Player {
         return ReturnMessage.WEAPON_NOT_EQUIPPED;
     }
 
+
     public int getDualWieldingDamage() {
         return dualWieldingDamage;
     }

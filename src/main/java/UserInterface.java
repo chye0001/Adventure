@@ -174,7 +174,7 @@ public class UserInterface {
 
                     //Attack sekvens når den tomme luft angribes.
                     if (checkStatusOfAttack == ReturnMessage.DUAL_WIELDING_ATTACK) {   //Udvidelse: dual wielding
-                        System.out.println("Dual wielding...into the air!\nDamage dealt on thin air: " + controller.getDualWieldingDamage());
+                        System.out.println("Dual wielding...into the air!\nDamage dealt on thin air: " + controller.getDamageDone());
 
                     } else if (checkStatusOfAttack == ReturnMessage.WEAPON1_NO_AMMO_USE_WEAPON_2) {  //Udvidelse: dual wielding
                         System.out.println(controller.getEquippedWeapon1() + " has no more ammo..\n" +
@@ -206,9 +206,7 @@ public class UserInterface {
                                            "It dropped: " + controller.getEnemyWeapon() + "\n");
 
                     } else if (checkStatusOfAttack == ReturnMessage.BATTLE_ONGOING_DUAL_WIELDING_ATTACK) {
-                        System.out.println("You attacked " + controller.getBattlingCurrentEnemy() + "\n" +
-                                "Enemy health: " + controller.getEnemyHealth() + "\n" +
-                                "Your health: " + controller.getPlayerHealth() + "\n");
+                        attackSequence();
 
                     } else if (checkStatusOfAttack == ReturnMessage.BATTLE_ONGOING_USE_WEAPON1_WEAPON2_NO_AMMO) {
                         attackSequence();

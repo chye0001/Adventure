@@ -14,8 +14,7 @@ public class Player {
     private Weapon attemptEquipWeapon1;
     private Weapon attemptEquipWeapon2;
     private Weapon unequippedWeapon;
-    private int dualWieldingDamage; //Udvidelse: dual wielding
-    private int weaponDamage;
+    private int weaponDamage; //Udvidelse: dual wielding
     private String battlingCurrentEnemy;
     private Enemy enemyKilled;
     private int enemyHealth;
@@ -203,7 +202,7 @@ public class Player {
             if (equippedWeapon1.getRemainingUsages() > 0 && equippedWeapon2.getRemainingUsages() > 0) { //If they both have ammo
                 equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
                 equippedWeapon2.setRemainingUsages(equippedWeapon2.getRemainingUsages() - 1);
-                dualWieldingDamage = equippedWeapon1.getDamage() + equippedWeapon2.getDamage();
+                weaponDamage = equippedWeapon1.getDamage() + equippedWeapon2.getDamage();
                 return ReturnMessage.DUAL_WIELDING_ATTACK;
 
             } else if (equippedWeapon1.getRemainingUsages() == 0 && equippedWeapon2.getRemainingUsages() == 0) { //If neither weapon has ammo
@@ -250,7 +249,7 @@ public class Player {
     public ReturnMessage attackSequenceDualWielding(String enemyToAttack) {
         for (Enemy enemy : currentRoom.getListOfEnemies()) {
             if (enemy.getEnemyName().toLowerCase().contains(enemyToAttack.toLowerCase())) {
-                enemy.setEnemyHealth(enemy.getEnemyHealth() - dualWieldingDamage);
+                enemy.setEnemyHealth(enemy.getEnemyHealth() - weaponDamage);
                 enemyHealth = enemy.getEnemyHealth();
                 playerHealth -= enemy.getEnemyWeapon().getDamage();
                 battlingCurrentEnemy = enemy.getEnemyName();
@@ -420,7 +419,7 @@ public class Player {
             if (equippedWeapon1.getRemainingUsages() > 0 && equippedWeapon2.getRemainingUsages() > 0) { //If they both have ammo
                 equippedWeapon1.setRemainingUsages(equippedWeapon1.getRemainingUsages() - 1);
                 equippedWeapon2.setRemainingUsages(equippedWeapon2.getRemainingUsages() - 1);
-                dualWieldingDamage = equippedWeapon1.getDamage() + equippedWeapon2.getDamage();
+                weaponDamage = equippedWeapon1.getDamage() + equippedWeapon2.getDamage();
                 return attackSequenceDualWielding(enemyToAttack);
 
             } else if (equippedWeapon1.getRemainingUsages() == 0 && equippedWeapon2.getRemainingUsages() == 0) { //If neither weapon has ammo
@@ -463,11 +462,6 @@ public class Player {
         }
 
         return ReturnMessage.WEAPON_NOT_EQUIPPED;
-    }
-
-
-    public int getDualWieldingDamage() {
-        return dualWieldingDamage;
     }
 
     public int getDamageDone() {
@@ -615,5 +609,4 @@ public class Player {
             inventory.remove(itemToDelete);
         }
     }
-
 }

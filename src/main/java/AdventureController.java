@@ -82,10 +82,6 @@ public class AdventureController {
         return player.attack(enemyToAttack);
     }
 
-    public int getDualWieldingDamage() {
-       return player.getDualWieldingDamage();
-    }
-
     public int getDamageDone() {
         return player.getDamageDone();
     }

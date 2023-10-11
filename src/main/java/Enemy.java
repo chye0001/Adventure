@@ -20,9 +20,10 @@ public abstract class Enemy {
     public abstract Weapon getEnemyWeapon();
 
     public abstract ReturnMessage hasEnemyDied();
+    public abstract void enemyDead(Enemy enemyKilled);
 
     public String toString() {
-        return enemyName + "\n" + enemyHealth + "hp";
+        return enemyName + ": " + enemyHealth + "hp";
     }
 
 }

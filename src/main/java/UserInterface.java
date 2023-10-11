@@ -109,13 +109,16 @@ public class UserInterface {
                     }
                 }
                 case "health" -> {
-                    controller.getPlayerHealth();
+                    System.out.println(controller.getPlayerHealth());
                     if (controller.getPlayerHealth() <= 100 && controller.getPlayerHealth() > 50) {
                         System.out.println("Health: " + controller.getPlayerHealth() + " - you are in good health, but avoid fighting right now.\n");
+
                     } else if (controller.getPlayerHealth() <= 50 && controller.getPlayerHealth() > 35) {
                         System.out.println("Health: " + controller.getPlayerHealth() + " - you are not in the best of shape. You should eat some food and rest\n");
+
                     } else if (controller.getPlayerHealth() <= 35 && controller.getPlayerHealth() > 20) {
                         System.out.println("Health: " + controller.getPlayerHealth() + " - you are in poor condition, consider eating some food and rest up\n");
+
                     } else if (controller.getPlayerHealth() <= 20 && controller.getPlayerHealth() > 0) {
                         System.out.println("Health: " + controller.getPlayerHealth() + " - you are in extremely poor condition, eat tons of food and take a long rest\n");
                     }
@@ -171,67 +174,67 @@ public class UserInterface {
 
                     //Attack sekvens når den tomme luft angribes.
                     if (checkStatusOfAttack == ReturnMessage.DUAL_WIELDING_ATTACK) {   //Udvidelse: dual wielding
-                        System.out.println("Dual wielding...!\nDamage dealt: " + controller.getDualWieldingDamage());
+                        System.out.println("Dual wielding...into the air!\nDamage dealt on thin air: " + controller.getDualWieldingDamage());
 
                     } else if (checkStatusOfAttack == ReturnMessage.WEAPON1_NO_AMMO_USE_WEAPON_2) {  //Udvidelse: dual wielding
                         System.out.println(controller.getEquippedWeapon1() + " has no more ammo..\n" +
-                                "Therefore I use my " + controller.getAttemptEquipWeapon2() + "\n" +
-                                "Damage dealt: " + controller.getDamageDone());
+                                "Therefore I use my " + controller.getAttemptEquipWeapon2() + " into the thin air\n" +
+                                "Damage dealt on air..: " + controller.getDamageDone());
 
                     } else if (checkStatusOfAttack == ReturnMessage.WEAPON2_NO_AMMO_USE_WEAPON_1) {  //Udvidelse: dual wielding
                         System.out.println(controller.getEquippedWeapon2() + " has no more ammo..\n" +
-                                "Therefore I use my " + controller.getAttemptEquipWeapon1() + "\n" +
-                                "Damage dealt: " + controller.getDamageDone());
+                                "Therefore I use my " + controller.getAttemptEquipWeapon1() + " into the thin air\n" +
+                                "Damage dealt on air..: " + controller.getDamageDone());
 
                     } else if (checkStatusOfAttack == ReturnMessage.ATTACK1) {
-                        System.out.println("I use my " + controller.getEquippedWeapon1());
-                        System.out.println("Damage dealt: " + controller.getDamageDone() + "\n");
+                        System.out.println("I use my " + controller.getEquippedWeapon1() + " on the air.." + "\n" +
+                                           "Damage dealt on nothing..: " + controller.getDamageDone() + "\n");
 
                     } else if (checkStatusOfAttack == ReturnMessage.ATTACK2) {
-                        System.out.println("I use my " + controller.getEquippedWeapon2());
-                        System.out.println("Damage dealt: " + controller.getDamageDone() + "\n");
+                        System.out.println("I use my " + controller.getEquippedWeapon2() + " on the air.." + "\n" +
+                                           "Damage dealt on nothing..: " + controller.getDamageDone() + "\n");
 
                     } else if (checkStatusOfAttack == ReturnMessage.NO_AMMO) {
                         System.out.println("You dont have any ammo left...\n");
 
                     } else if (checkStatusOfAttack == ReturnMessage.WEAPON_NOT_EQUIPPED) {
-                        System.out.println("You have not equipped a weapon...");
+                        System.out.println("\nYou have not equipped a weapon...\n");
 
                         //Attack sekvens når der angribes en enemy
                     } else if (checkStatusOfAttack == ReturnMessage.ENEMY_KILLED) {
-                        System.out.println("You killed " + controller.getEnemyKilled());
+                        System.out.println("You killed " + controller.getEnemyKilled() + "\n" +
+                                           "It dropped: " + controller.getEnemyWeapon() + "\n");
 
                     } else if (checkStatusOfAttack == ReturnMessage.BATTLE_ONGOING_DUAL_WIELDING_ATTACK) {
-                        System.out.println("Enemy health: " + controller.getEnemyHealth() + "\n" +
-                                           "Your health: " + controller.getPlayerHealth());
+                        System.out.println("You attacked " + controller.getBattlingCurrentEnemy() + "\n" +
+                                "Enemy health: " + controller.getEnemyHealth() + "\n" +
+                                "Your health: " + controller.getPlayerHealth() + "\n");
 
                     } else if (checkStatusOfAttack == ReturnMessage.BATTLE_ONGOING_USE_WEAPON1_WEAPON2_NO_AMMO) {
-                        System.out.println("Enemy health: " + controller.getEnemyHealth() + "\n" +
-                                "Your health: " + controller.getPlayerHealth());
+                        attackSequence();
 
                     } else if (checkStatusOfAttack == ReturnMessage.BATTLE_ONGOING_USE_WEAPON2_WEAPON1_NO_AMMO) {
-                        System.out.println("Enemy health: " + controller.getEnemyHealth() + "\n" +
-                                "Your health: " + controller.getPlayerHealth());
+                        attackSequence();
 
                     } else if (checkStatusOfAttack == ReturnMessage.BATTLE_ONGOING_USE_WEAPON1_WEAPON2_NOT_EQUIPPED) {
-                        System.out.println("Enemy health: " + controller.getEnemyHealth() + "\n" +
-                                "Your health: " + controller.getPlayerHealth());
+                        attackSequence();
 
                     } else if (checkStatusOfAttack == ReturnMessage.BATTLE_ONGOING_USE_WEAPON2_WEAPON1_NOT_EQUIPPED) {
-                        System.out.println("Enemy health: " + controller.getEnemyHealth() + "\n" +
-                                "Your health: " + controller.getPlayerHealth());
+                        attackSequence();
+
+                    } else if (checkStatusOfAttack == ReturnMessage.CANT_FIND) {
+                        System.out.println("I dont see that enemy\n");
+
+                    } else if (checkStatusOfAttack == ReturnMessage.PLAYER_DEAD_AND_ENEMY_KILLED) {
+                        System.out.println("\nEnemy health: " + controller.getEnemyHealth() + "\n" +
+                                           "Your health: " + controller.getPlayerHealth() + "\n" +
+                                           "As your finishing attack hits " + controller.getBattlingCurrentEnemy() + " it too hits you with a lethal blow, \n" +
+                                           "leaving you two dead, ending the battle...");
+                        input = restartGame();
 
                     } else if (checkStatusOfAttack == ReturnMessage.PLAYER_DEAD) {
-                        System.out.println("You died, game over...\nDo you wish to reset the game? [yes/no]");
-                        input = scanner.nextLine();
-                        if (input.equalsIgnoreCase("yes")) {
-                            controller.resetInventoryOnPlayerDeath();
-                            controller.buildMap();
-                        } else if (input.equalsIgnoreCase("no")) {
-                            System.out.println("Thanks for playing");
-                            input = "exit";
-                        }
-
+                        System.out.println("\nAs you attack " + controller.getBattlingCurrentEnemy() + " it hits you with a finishing blow, killing you on the spot...");
+                        input = restartGame();
                     }
                 }
 
@@ -253,5 +256,28 @@ public class UserInterface {
             }
         }
         while (!input.equalsIgnoreCase("exit"));
+    }
+
+    public void attackSequence() {
+        System.out.println("\nYou attacked " + controller.getBattlingCurrentEnemy() + "\n" +
+                "Damage dealt: " + controller.getDamageDone() + "\n" +
+                "Enemy damage dealt: " + controller.getEnemyWeapon().getDamage() + "\n\n" + //TODO Clean up code by comply with Demeter's law. (NOTE FOR MYSELF TO LAZY, CCY)
+                "Enemy health: " + controller.getEnemyHealth() + "\n" +
+                "Your health: " + controller.getPlayerHealth() + "\n");
+    }
+
+    public String restartGame() {
+        System.out.println("\nGame over...\nDo you wish to restart the game? [yes/no]");
+        input = scanner.nextLine();
+        if (input.equalsIgnoreCase("yes")) {
+            controller.resetInventoryOnPlayerDeath();
+            startGame();
+
+        } else if (input.equalsIgnoreCase("no")) {
+            System.out.println("\nThanks for playing");
+            input = "exit";
+            return input;
+        }
+        return input;
     }
 }

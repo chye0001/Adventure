@@ -20,11 +20,11 @@ public class Map {
         room1.setNorth(null);
         room1.setSouth(room4);
         room1.setWest(null);
-        room1.addItemToRoom(new MeeleWeapon("Long Sword", 25, 1000000));
+        room1.addItemToRoom(new MeeleWeapon("Long Sword", 12, 1000000));
         room1.addItemToRoom(new MeeleWeapon("Dagger", 7, 1000000));
         room1.addItemToRoom(new Liquid("Bottle of Water", 0));
         room1.addItemToRoom(new Liquid("Bottle of Piss", -3));
-        room1.addEnemy(new Troll("Big ugly troll", 25, new MeeleWeapon("Wooden Club", 35, 222), room1));
+        room1.addEnemy(new Troll("Big ugly troll", 35, new MeeleWeapon("Wooden Club", 10, 222), room1));
 
         room2.setEast(room3);
         room2.setNorth(null);
@@ -32,6 +32,7 @@ public class Map {
         room2.setWest(room1);
         room2.addItemToRoom(new Item("Pile of Bones"));
         room2.addItemToRoom(new Food("Rose", -5));
+        room2.addEnemy(new Troll("Big ugly troll", 35, new MeeleWeapon("Wooden Club", 100, 222), room2));
 
 
         room3.setEast(null);

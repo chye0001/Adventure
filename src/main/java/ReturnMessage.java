@@ -19,6 +19,7 @@ public enum ReturnMessage {
     WEAPON2_NO_AMMO_USE_WEAPON_1, //Udvidelse: dual wielding
     PLAYER_DEAD,
     ENEMY_KILLED,
+    PLAYER_DEAD_AND_ENEMY_KILLED,
     BATTLE_ONGOING_DUAL_WIELDING_ATTACK,
     ENEMY_DEAD,
     ENEMY_ALIVE,

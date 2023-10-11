@@ -115,8 +115,8 @@ public class AdventureController {
         return player.getEquippedWeapon2();
     }
 
-    public boolean unequip(String choosenWeaponToUnequip) {
-        return player.unequipWeapon(choosenWeaponToUnequip);
+    public boolean unequip(String chosenWeaponToUnequip) {
+        return player.unequipWeapon(chosenWeaponToUnequip);
     }
 
     public Weapon getUnequippedWeapon() {
@@ -129,6 +129,14 @@ public class AdventureController {
 
     public int getEnemyHealth() {
         return player.getEnemyHealth();
+    }
+
+    public Weapon getEnemyWeapon() {
+        return player.getEnemyWeapon();
+    }
+
+    public String getBattlingCurrentEnemy() {
+        return player.getBattlingCurrentEnemy();
     }
 
     public Enemy getEnemyKilled() {

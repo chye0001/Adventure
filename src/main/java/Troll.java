@@ -1,7 +1,5 @@
 public class Troll extends Enemy{
 
-    private Troll troll;
-
     Troll(String enemyName, int enemyHealth, Weapon enemyWeapon, Room currentRoom) {
         super(enemyName, enemyHealth, enemyWeapon, currentRoom);
     }
@@ -32,9 +30,13 @@ public class Troll extends Enemy{
             return ReturnMessage.ENEMY_ALIVE;
 
         } else {
-            currentRoom.dropItemInRoom(enemyWeapon);
-            currentRoom.removeEnemyFromRoom(troll);
             return ReturnMessage.ENEMY_DEAD;
         }
+    }
+
+    @Override
+    public void enemyDead(Enemy enemyKilled) {
+        currentRoom.dropItemInRoom(enemyWeapon);
+        currentRoom.removeEnemyFromRoom(enemyKilled);
     }
 }
